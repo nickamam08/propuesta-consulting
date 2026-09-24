@@ -7,18 +7,17 @@ import {
   Megaphone,
   Code2,
   Users,
-  MessageCircle,
-  ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 
 const TEAM_MEMBERS = [
-  { role: 'Dirección Estratégica', icon: Compass, note: 'Prioridades comerciales, ruta de conversión y visión de negocio', color: 'text-purple-400 bg-purple-500/10' },
-  { role: 'Diseño & Comunicación Visual', icon: Palette, note: 'Identidad, piezas gráficas, infografías y formatos de alto impacto', color: 'text-cyan-400 bg-cyan-500/10' },
-  { role: 'Producción Audiovisual', icon: Video, note: 'Jornadas de rodaje presenciales, dirección, reels y edición', color: 'text-rose-400 bg-rose-500/10' },
-  { role: 'Contenidos & Community', icon: MessageSquare, note: 'Copywriting persuasivo, planeación editorial y publicaciones', color: 'text-emerald-400 bg-emerald-500/10' },
-  { role: 'Publicidad Digital (Ads)', icon: Megaphone, note: 'Gestión y optimización continua de Meta Ads y Google Ads', color: 'text-amber-400 bg-amber-500/10' },
-  { role: 'Desarrollo Web & IA', icon: Code2, note: 'Arquitectura UX/UI responsive, optimización CRO y tecnología', color: 'text-blue-400 bg-blue-500/10' },
-  { role: 'Coordinación de Proyecto', icon: Users, note: 'Punto de contacto centralizado, cronograma y entregables', color: 'text-purple-300 bg-purple-500/10' },
+  { role: 'Dirección Estratégica', icon: Compass, note: 'Prioridades comerciales, ruta de conversión y visión de negocio' },
+  { role: 'Diseño & Comunicación Visual', icon: Palette, note: 'Identidad, piezas gráficas, infografías y formatos de alto impacto' },
+  { role: 'Producción Audiovisual', icon: Video, note: 'Jornadas de rodaje presenciales, dirección, reels y edición' },
+  { role: 'Contenidos & Community', icon: MessageSquare, note: 'Copywriting persuasivo, planeación editorial y publicaciones' },
+  { role: 'Publicidad Digital (Ads)', icon: Megaphone, note: 'Gestión y optimización continua de Meta Ads y Google Ads' },
+  { role: 'Desarrollo Web & IA', icon: Code2, note: 'Arquitectura UX/UI responsive, optimización CRO y tecnología' },
+  { role: 'Coordinación de Proyecto', icon: Users, note: 'Punto de contacto centralizado, cronograma y entregables' },
 ];
 
 export default function Team() {
@@ -31,98 +30,92 @@ export default function Team() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.08 }
     );
-    el.querySelectorAll('.reveal').forEach((node) => obs.observe(node));
+    el.querySelectorAll('.reveal-on-scroll').forEach((node) => obs.observe(node));
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="equipo" ref={ref} className="py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="equipo" ref={ref} className="py-14 relative">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         
-        {/* Header */}
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-start mb-12">
-          
-          <div>
-            <div className="reveal flex items-center gap-2 mb-4">
-              <span className="obsidian-tag">
-                <Users size={12} className="text-purple-400" />
-                // Lo que nos diferencia
-              </span>
-              <span className="obsidian-tag obsidian-tag-purple">
-                #equipo-integral
-              </span>
-            </div>
-
-            <h2 className="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5">
-              No está contratando una persona.{' '}
-              <span className="gradient-text-purple">
-                Está sumando un equipo.
-              </span>
-            </h2>
-
-            <p className="reveal text-slate-300 text-base leading-relaxed mb-6 font-normal">
-              Punto D' Partida integra estrategia, contenido, diseño, producción audiovisual, publicidad, desarrollo web y coordinación para acompañar el crecimiento digital de Finanzas Consulting desde una visión integral.
-            </p>
-
-            <div className="reveal obsidian-callout obsidian-callout-note flex items-start gap-3">
-              <ShieldCheck size={17} className="text-purple-400 shrink-0 mt-0.5" />
-              <div className="text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white">Coordinación Unificada:</strong> Finanzas Consulting no tiene que gestionar múltiples freelancers o agencias aisladas; cuenta con un interlocutor central y un equipo especializado detrás.
-              </div>
-            </div>
+        {/* Section Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
+            <Users size={14} />
+            <span>8. Ecosistema de trabajo y relación entre propuestas</span>
           </div>
-
-          {/* Right Column: Team Grid */}
-          <div className="reveal grid sm:grid-cols-2 gap-3.5">
-            {TEAM_MEMBERS.map((member, i) => {
-              const Icon = member.icon;
-              return (
-                <div
-                  key={member.role}
-                  className={`obsidian-card rounded-2xl p-4 flex items-start gap-3.5 hover:border-purple-500/30 transition-all ${
-                    i === TEAM_MEMBERS.length - 1 ? 'sm:col-span-2' : ''
-                  }`}
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border border-white/[0.08] ${member.color}`}>
-                    <Icon size={18} />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white leading-snug">
-                      {member.role}
-                    </h4>
-                    <p className="text-[11px] text-slate-400 leading-relaxed mt-0.5">
-                      {member.note}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            No está contratando una persona. Está sumando un equipo.
+          </h2>
+          <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            PD’P integra estrategia, contenido, diseño, audiovisual, publicidad, desarrollo y coordinación para acompañar los objetivos digitales de Finanzas Consulting.
+          </p>
         </div>
 
-        {/* Central Communication Note Card */}
-        <div className="reveal obsidian-card rounded-3xl p-6 sm:p-8 border-purple-500/25 relative overflow-hidden">
-          <div className="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
-              <MessageCircle size={22} />
-            </div>
-
+        {/* Bento Grid: 2 Top Context Tiles + Team Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
+          {/* Tile 1: Relación entre Propuestas & Recomendación PD'P (Cols 5) */}
+          <div className="lg:col-span-5 bento-card p-6 sm:p-7 flex flex-col justify-between border-white/[0.09] bg-gradient-to-br from-[#12151c] to-[#0a0c10]">
             <div>
-              <h3 className="font-display text-lg font-bold text-white mb-1">
-                Un solo canal directo de trabajo
+              <div className="flex items-center gap-2 text-xs font-mono text-yellow-400 font-bold mb-3">
+                <Sparkles size={14} />
+                <span>Recomendación Estratégica PD’P</span>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">
+                ¿Contratando Pymes Financiables?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Al dar inicio al proyecto, se crea un grupo oficial de trabajo con los perfiles necesarios de Punto D' Partida y los líderes de Finanzas Consulting para centralizar solicitudes, materiales, aprobaciones y avances semanales.
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4">
+                Si la campaña representa una puerta de entrada a una relación de largo plazo, recomendamos contratar también la <strong className="text-white">Etapa Inicial ($1.700.000 + IVA)</strong>.
+              </p>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Esto permite organizar la base digital, perfiles, WhatsApp, lineamientos y estructura estratégica antes de escalar la pauta publicitaria.
               </p>
             </div>
 
-            <span className="obsidian-tag obsidian-tag-emerald text-xs hidden md:inline-flex shrink-0">
-              #comunicacion-agil
-            </span>
+            <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between">
+              <span className="text-xs text-gray-400">Combo Recomendado:</span>
+              <span className="text-xs font-mono font-bold text-[#1ED760]">
+                $3.8M + $1.7M = $5.5M + IVA
+              </span>
+            </div>
+          </div>
+
+          {/* Tile 2: Team Members Bento Grid (Cols 7) */}
+          <div className="lg:col-span-7 bento-card p-6 sm:p-7 border-white/[0.09]">
+            <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.08]">
+              <span className="text-xs font-mono font-bold uppercase text-white tracking-wider">
+                7 Perfiles Multidisciplinarios Integrados
+              </span>
+              <span className="bento-badge bento-badge-green font-mono text-[10px]">
+                Coordinación Única
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {TEAM_MEMBERS.map((member, i) => {
+                const Icon = member.icon;
+                return (
+                  <div
+                    key={member.role}
+                    className={`p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#1DB954]/40 transition-all flex items-start gap-3 ${
+                      i === TEAM_MEMBERS.length - 1 ? 'sm:col-span-2' : ''
+                    }`}
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-[#1DB954]/10 border border-[#1DB954]/30 flex items-center justify-center text-[#1ED760] shrink-0">
+                      <Icon size={16} />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-white leading-snug">
+                        {member.role}
+                      </div>
+                      <div className="text-[11px] text-gray-400 leading-tight mt-0.5">
+                        {member.note}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 

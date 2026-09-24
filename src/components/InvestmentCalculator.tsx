@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { PHASES, PYMES_CAMPAIGN, PROJECT_START, getWhatsAppCustomLink } from '../data/proposalData';
 import {
   Calculator,
-  CheckCircle2,
   Send,
-  Receipt,
 } from 'lucide-react';
 
 export default function InvestmentCalculator() {
@@ -24,7 +22,7 @@ export default function InvestmentCalculator() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.08 }
     );
-    el.querySelectorAll('.reveal').forEach((c) => obs.observe(c));
+    el.querySelectorAll('.reveal-on-scroll').forEach((c) => obs.observe(c));
     return () => obs.disconnect();
   }, []);
 
@@ -67,309 +65,245 @@ export default function InvestmentCalculator() {
   const dynamicWhatsAppLink = getWhatsAppCustomLink(generateWhatsAppSummary());
 
   return (
-    <section id="calculadora" ref={ref} className="py-16 sm:py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-16 sm:mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="inversion" ref={ref} className="py-14 relative">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-          <div className="reveal flex justify-center mb-3">
-            <span className="obsidian-tag obsidian-tag-purple text-[10px] sm:text-xs">
-              <Calculator size={11} className="text-purple-400 shrink-0" />
-              // Herramienta Interactiva
-            </span>
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
+            <Calculator size={14} />
+            <span>Simulador Interactivo de Presupuesto</span>
           </div>
-
-          <h2 className="reveal font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-3 sm:mb-4">
-            Simulador de inversión <span className="gradient-text-purple">personalizado.</span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            Personaliza tu propuesta en tiempo real
           </h2>
-
-          <p className="reveal text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-            Seleccione el plan y los módulos que necesita para visualizar el desglose exacto de su inversión inicial y mensual.
+          <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            Selecciona la fase mensual y los servicios que necesitas para conocer el desglose exacto de pago único y valor mensual.
           </p>
         </div>
 
-        {/* Calculator Grid */}
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-6 sm:gap-8 items-start">
+        {/* Calculator Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
           
-          {/* Left Column: Interactive Selectors */}
-          <div className="reveal space-y-4 sm:space-y-6">
+          {/* Left Column (Selectors - Cols 7) */}
+          <div className="lg:col-span-7 space-y-4">
             
-            {/* Step 1: Base Stage */}
-            <div className="obsidian-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-purple-500/20">
-              <div className="flex items-start sm:items-center justify-between gap-3">
-                <div className="flex items-start gap-3">
+            {/* Step 1: Etapa Inicial */}
+            <div className="bento-card p-5 border-white/[0.08]">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     id="calc-base"
                     checked={includeBase}
                     onChange={(e) => setIncludeBase(e.target.checked)}
-                    className="w-5 h-5 rounded-md accent-purple-600 cursor-pointer shrink-0 mt-0.5"
+                    className="w-5 h-5 rounded accent-[#1DB954] cursor-pointer"
                   />
-                  <label htmlFor="calc-base" className="cursor-pointer">
-                    <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-purple-300">
-                      Paso 01 · Etapa Base Obligatoria
-                    </div>
-                    <div className="font-display font-bold text-sm sm:text-base text-white">
-                      Construcción Estratégica Inicial
-                    </div>
-                    <div className="text-[11px] sm:text-xs text-slate-400 mt-0.5">
-                      Diagnóstico, brief, optimización de perfiles y accesos (15–20 días)
-                    </div>
-                  </label>
-                </div>
-                <div className="text-right shrink-0">
-                  <div className="font-mono font-bold text-white text-sm sm:text-base">
-                    $1.700.000
-                  </div>
-                  <div className="text-[9px] sm:text-[10px] font-mono text-slate-500">
-                    pago único
+                  <div>
+                    <label htmlFor="calc-base" className="text-sm font-bold text-white cursor-pointer block">
+                      Etapa Inicial — Estrategia y Configuración
+                    </label>
+                    <span className="text-xs text-gray-400 block">
+                      Obligatoria para iniciar Fase 1, 2 o 3 (15–20 días)
+                    </span>
                   </div>
                 </div>
+                <span className="text-sm font-mono font-bold text-white shrink-0">
+                  +$1.700.000 <span className="text-[10px] text-gray-400 block sm:inline font-sans font-normal">único</span>
+                </span>
               </div>
             </div>
 
-            {/* Step 2: Monthly Phase Selection */}
-            <div className="obsidian-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-purple-500/20">
-              <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-purple-300 mb-3 sm:mb-4 flex items-center justify-between">
-                <span>Paso 02 · Nivel Mensual (Se elige 1)</span>
-                <span className="text-slate-500 text-[10px]">6 meses</span>
-              </div>
+            {/* Step 2: Fase Mensual Selector */}
+            <div className="bento-card p-5 border-white/[0.08]">
+              <span className="text-xs font-mono uppercase font-bold text-gray-400 block mb-3">
+                Selecciona una alternativa mensual (Propuesta 01):
+              </span>
 
-              <div className="space-y-2.5 sm:space-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {PHASES.map((p) => {
                   const isSelected = selectedPhaseId === p.id;
                   return (
-                    <div
+                    <button
                       key={p.id}
+                      type="button"
                       onClick={() => setSelectedPhaseId(isSelected ? null : p.id)}
-                      className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all flex items-center justify-between gap-3 ${
+                      className={`p-3.5 rounded-xl border text-left transition-all relative flex flex-col justify-between ${
                         isSelected
-                          ? 'bg-purple-500/15 border-purple-500/50 shadow-[0_0_20px_rgba(139,92,246,0.15)]'
-                          : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
+                          ? 'bg-[#1DB954]/15 border-[#1DB954] shadow-[0_0_20px_rgba(29,185,84,0.2)]'
+                          : 'bg-white/[0.02] border-white/[0.06] hover:border-white/[0.15]'
                       }`}
                     >
-                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-                        <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border flex items-center justify-center shrink-0 ${
-                          isSelected ? 'border-purple-400 bg-purple-600 text-white' : 'border-slate-600'
-                        }`}>
-                          {isSelected && <CheckCircle2 size={12} />}
-                        </div>
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-1.5">
-                            <span className="font-mono text-[10px] sm:text-xs font-bold text-purple-300">{p.tag}</span>
-                            <span className="text-xs sm:text-sm font-bold text-white truncate">{p.name}</span>
-                            {p.isRecommended && (
-                              <span className="px-1.5 py-0.5 rounded text-[8px] bg-purple-500/20 text-purple-200 font-mono font-bold">
-                                ★ TOP
-                              </span>
-                            )}
-                          </div>
-                          <div className="text-[10px] sm:text-[11px] text-slate-400 mt-0.5 truncate">
-                            {p.concept}
-                          </div>
-                        </div>
+                      {p.isRecommended && (
+                        <span className="text-[9px] font-mono font-extrabold text-[#1ED760] mb-1">
+                          ★ Recomendada
+                        </span>
+                      )}
+                      <div>
+                        <div className="text-xs font-bold text-white">{p.tag}</div>
+                        <div className="text-[11px] text-gray-400 leading-tight mt-0.5">{p.name}</div>
                       </div>
-
-                      <div className="text-right shrink-0">
-                        <div className="font-mono font-bold text-white text-xs sm:text-base">
-                          {p.price}
-                        </div>
-                        <div className="text-[9px] sm:text-[10px] font-mono text-slate-500">
-                          / mes
-                        </div>
+                      <div className="text-sm font-mono font-extrabold text-white mt-3">
+                        {p.price}
+                        <span className="text-[10px] text-gray-400 font-sans font-normal block">/ mes</span>
                       </div>
-                    </div>
+                    </button>
                   );
                 })}
-
-                {/* Option to uncheck monthly plan */}
-                <button
-                  type="button"
-                  onClick={() => setSelectedPhaseId(null)}
-                  className={`w-full py-2 px-3 text-center text-xs font-mono transition-colors ${
-                    selectedPhaseId === null ? 'text-purple-300 font-bold' : 'text-slate-500 hover:text-slate-400'
-                  }`}
-                >
-                  {selectedPhaseId === null ? '✓ Sin plan mensual (solo campañas/servicios)' : 'Desmarcar plan mensual'}
-                </button>
               </div>
+
+              {selectedPhaseId === null && (
+                <span className="text-[11px] text-gray-400 mt-2 block">
+                  * Sin fase mensual seleccionada (solo servicios puntuales).
+                </span>
+              )}
             </div>
 
-            {/* Step 3: Add-on Implementations */}
-            <div className="obsidian-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-purple-500/20">
-              <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-purple-300 mb-3 sm:mb-4">
-                Paso 03 · Servicios y Campañas Complementarias
-              </div>
+            {/* Step 3: Complementarios & Campaña */}
+            <div className="bento-card p-5 border-white/[0.08] space-y-3">
+              <span className="text-xs font-mono uppercase font-bold text-gray-400 block mb-1">
+                Servicios complementarios y campañas adicionales:
+              </span>
 
-              <div className="space-y-2.5 sm:space-y-3">
-                {/* Pymes Financiables */}
-                <label className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all flex items-start sm:items-center justify-between gap-3 ${
-                  includePymes ? 'bg-emerald-500/10 border-emerald-500/40' : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
-                }`}>
-                  <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
-                    <input
-                      type="checkbox"
-                      checked={includePymes}
-                      onChange={(e) => setIncludePymes(e.target.checked)}
-                      className="w-5 h-5 rounded-md accent-emerald-500 cursor-pointer shrink-0 mt-0.5 sm:mt-0"
-                    />
-                    <div>
-                      <div className="text-[10px] font-mono text-emerald-300 font-bold uppercase">Campaña Puntual</div>
-                      <div className="text-xs sm:text-sm font-bold text-white">Campaña Pymes Financiables</div>
-                      <div className="text-[10px] sm:text-[11px] text-slate-400">1 jornada audiovisual, 8 reels, gráficas y Meta Ads</div>
-                    </div>
+              {/* Campaña Pymes */}
+              <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="calc-pymes"
+                    checked={includePymes}
+                    onChange={(e) => setIncludePymes(e.target.checked)}
+                    className="w-5 h-5 rounded accent-[#1DB954] cursor-pointer"
+                  />
+                  <div>
+                    <label htmlFor="calc-pymes" className="text-xs font-bold text-white cursor-pointer block">
+                      Campaña Pymes Financiables
+                    </label>
+                    <span className="text-[11px] text-gray-400 block">
+                      Producción audiovisual + 8 reels + Meta Ads puntual
+                    </span>
                   </div>
-                  <div className="text-right shrink-0">
-                    <div className="font-mono font-bold text-emerald-400 text-xs sm:text-sm">$3.800.000</div>
-                    <div className="text-[9px] font-mono text-slate-500">pago único</div>
-                  </div>
-                </label>
-
-                {/* Google Ads */}
-                <label className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all flex items-start sm:items-center justify-between gap-3 ${
-                  includeGoogleAds ? 'bg-purple-500/10 border-purple-500/40' : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
-                }`}>
-                  <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
-                    <input
-                      type="checkbox"
-                      checked={includeGoogleAds}
-                      onChange={(e) => setIncludeGoogleAds(e.target.checked)}
-                      className="w-5 h-5 rounded-md accent-purple-600 cursor-pointer shrink-0 mt-0.5 sm:mt-0"
-                    />
-                    <div>
-                      <div className="text-[10px] font-mono text-purple-300 font-bold uppercase">Implementación</div>
-                      <div className="text-xs sm:text-sm font-bold text-white">Implementación Google Ads</div>
-                      <div className="text-[10px] sm:text-[11px] text-slate-400">Configuración técnica, conversiones y 2 campañas</div>
-                    </div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <div className="font-mono font-bold text-purple-300 text-xs sm:text-sm">$2.800.000</div>
-                    <div className="text-[9px] font-mono text-slate-500">pago único</div>
-                  </div>
-                </label>
-
-                {/* Web + IA */}
-                <label className={`p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border cursor-pointer transition-all flex items-start sm:items-center justify-between gap-3 ${
-                  includeWebIA ? 'bg-purple-500/10 border-purple-500/40' : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04]'
-                }`}>
-                  <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
-                    <input
-                      type="checkbox"
-                      checked={includeWebIA}
-                      onChange={(e) => setIncludeWebIA(e.target.checked)}
-                      className="w-5 h-5 rounded-md accent-purple-600 cursor-pointer shrink-0 mt-0.5 sm:mt-0"
-                    />
-                    <div>
-                      <div className="text-[10px] font-mono text-purple-300 font-bold uppercase">Desarrollo</div>
-                      <div className="text-xs sm:text-sm font-bold text-white">Web + IA — Rediseño / Desarrollo</div>
-                      <div className="text-[10px] sm:text-[11px] text-slate-400">Arquitectura UX/UI responsive y conversión</div>
-                    </div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <div className="font-mono font-bold text-purple-300 text-xs sm:text-sm">$2.200.000</div>
-                    <div className="text-[9px] font-mono text-slate-500">pago único</div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Right Column: Calculated Summary Card */}
-          <div className="reveal lg:sticky lg:top-24">
-            <div className="obsidian-card rounded-2xl sm:rounded-3xl p-5 sm:p-7 border-purple-500/30 shadow-[0_0_50px_rgba(139,92,246,0.18)]">
-              
-              <div className="flex items-center justify-between pb-3 sm:pb-4 mb-4 sm:mb-5 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <Receipt size={17} className="text-purple-400" />
-                  <h3 className="font-display font-bold text-sm sm:text-base text-white">
-                    Resumen Estimado
-                  </h3>
                 </div>
-                <span className="obsidian-tag obsidian-tag-purple text-[10px]">
-                  #cotizacion-activa
+                <span className="text-xs font-mono font-bold text-white shrink-0">
+                  +$3.800.000 <span className="text-[10px] text-gray-400 block sm:inline font-sans font-normal">único</span>
                 </span>
               </div>
 
-              {/* Breakdown List */}
-              <div className="space-y-2.5 mb-5 text-xs">
-                {includeBase && (
-                  <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                    <span className="text-slate-300">Etapa Base Inicial:</span>
-                    <span className="font-mono font-semibold text-white">$1.700.000</span>
-                  </div>
-                )}
-                {selectedPhase && (
-                  <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                    <span className="text-slate-300">{selectedPhase.tag} (Mensual):</span>
-                    <span className="font-mono font-semibold text-purple-300">{selectedPhase.price} / mes</span>
-                  </div>
-                )}
-                {includePymes && (
-                  <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                    <span className="text-slate-300">Campaña Pymes:</span>
-                    <span className="font-mono font-semibold text-emerald-400">$3.800.000</span>
-                  </div>
-                )}
-                {includeGoogleAds && (
-                  <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                    <span className="text-slate-300">Implementación Google Ads:</span>
-                    <span className="font-mono font-semibold text-white">$2.800.000</span>
-                  </div>
-                )}
-                {includeWebIA && (
-                  <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                    <span className="text-slate-300">Web + IA:</span>
-                    <span className="font-mono font-semibold text-white">$2.200.000</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Total Summary Blocks */}
-              <div className="space-y-2.5 p-3.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] mb-5">
-                <div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider">
-                    Inversión Inicial (Pago Único)
-                  </div>
-                  <div className="font-mono text-xl sm:text-3xl font-extrabold text-white mt-0.5">
-                    ${formatCOP(oneOffTotal)} <small className="text-xs font-normal text-slate-400">+ IVA</small>
+              {/* Google Ads */}
+              <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="calc-google"
+                    checked={includeGoogleAds}
+                    onChange={(e) => setIncludeGoogleAds(e.target.checked)}
+                    className="w-5 h-5 rounded accent-[#1DB954] cursor-pointer"
+                  />
+                  <div>
+                    <label htmlFor="calc-google" className="text-xs font-bold text-white cursor-pointer block">
+                      Implementación Google Ads
+                    </label>
+                    <span className="text-[11px] text-gray-400 block">
+                      Configuración profesional + hasta 2 campañas iniciales
+                    </span>
                   </div>
                 </div>
-
-                {monthlyTotal > 0 && (
-                  <div className="pt-2.5 border-t border-white/[0.06]">
-                    <div className="text-[10px] sm:text-[11px] font-mono text-purple-300 uppercase tracking-wider">
-                      Acompañamiento Mensual (6 meses)
-                    </div>
-                    <div className="font-mono text-xl sm:text-3xl font-extrabold text-purple-200 mt-0.5">
-                      ${formatCOP(monthlyTotal)} <small className="text-xs font-normal text-slate-400">+ IVA / mes</small>
-                    </div>
-                  </div>
-                )}
+                <span className="text-xs font-mono font-bold text-white shrink-0">
+                  +$2.800.000 <span className="text-[10px] text-gray-400 block sm:inline font-sans font-normal">único</span>
+                </span>
               </div>
 
-              {/* Direct WhatsApp Action */}
-              <a
-                href={dynamicWhatsAppLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary-obsidian w-full text-xs justify-center py-3.5 mb-2.5"
-              >
-                <Send size={14} />
-                <span>Enviar mi selección por WhatsApp</span>
-              </a>
-
-              <p className="text-[9px] sm:text-[10px] text-slate-500 font-mono text-center leading-relaxed">
-                Al hacer clic, se abrirá WhatsApp con el resumen de su selección para coordinar el inicio con el equipo.
-              </p>
-
+              {/* Web + IA */}
+              <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    id="calc-web"
+                    checked={includeWebIA}
+                    onChange={(e) => setIncludeWebIA(e.target.checked)}
+                    className="w-5 h-5 rounded accent-[#1DB954] cursor-pointer"
+                  />
+                  <div>
+                    <label htmlFor="calc-web" className="text-xs font-bold text-white cursor-pointer block">
+                      Web + IA — Rediseño / Desarrollo
+                    </label>
+                    <span className="text-[11px] text-gray-400 block">
+                      UX/UI responsive + WhatsApp + Chatbot IA básico
+                    </span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono font-bold text-white shrink-0">
+                  +$2.200.000 <span className="text-[10px] text-gray-400 block sm:inline font-sans font-normal">único</span>
+                </span>
+              </div>
             </div>
           </div>
 
-        </div>
+          {/* Right Column (Total Summary Bento Box - Cols 5) */}
+          <div className="lg:col-span-5 bento-card bento-card-green-glow p-6 sm:p-7 border-[#1DB954]/30 sticky top-24">
+            <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.08]">
+              <span className="text-xs font-mono uppercase font-bold text-[#1ED760]">
+                Resumen de Presupuesto
+              </span>
+              <span className="text-[11px] font-mono text-gray-400">
+                Simulación
+              </span>
+            </div>
 
+            <div className="space-y-4 mb-6">
+              {/* One-off summary */}
+              <div className="p-4 rounded-2xl bg-[#090a0f]/80 border border-white/[0.08]">
+                <span className="text-[11px] font-mono text-gray-400 uppercase block">
+                  Inversión Inicial (Pago Único):
+                </span>
+                <div className="flex items-baseline gap-2 mt-1">
+                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-white">
+                    ${formatCOP(oneOffTotal)}
+                  </span>
+                  <span className="text-xs font-mono text-[#1ED760] font-bold">
+                    + IVA
+                  </span>
+                </div>
+              </div>
+
+              {/* Monthly summary */}
+              <div className="p-4 rounded-2xl bg-[#090a0f]/80 border border-white/[0.08]">
+                <span className="text-[11px] font-mono text-gray-400 uppercase block">
+                  Acompañamiento Mensual (6 meses):
+                </span>
+                <div className="flex items-baseline gap-2 mt-1">
+                  <span className="text-2xl sm:text-3xl font-mono font-extrabold text-white">
+                    ${formatCOP(monthlyTotal)}
+                  </span>
+                  <span className="text-xs font-mono text-[#1ED760] font-bold">
+                    + IVA / mes
+                  </span>
+                </div>
+                {selectedPhase && (
+                  <span className="text-[11px] text-gray-400 mt-1 block">
+                    Seleccionado: {selectedPhase.tag} ({selectedPhase.name})
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Export WhatsApp Button */}
+            <a
+              href={dynamicWhatsAppLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-spotify w-full justify-center text-xs py-3"
+            >
+              <span>Enviar esta configuración a WhatsApp</span>
+              <Send size={14} />
+            </a>
+
+            <span className="text-[10px] text-gray-500 text-center block mt-3">
+              * Valores en pesos colombianos (+ IVA). Pauta publicitaria no incluida.
+            </span>
+          </div>
+
+        </div>
       </div>
     </section>
   );

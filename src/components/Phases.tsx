@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { PHASES } from '../data/proposalData';
 import PhaseCard from './PhaseCard';
-import { Layers, HelpCircle } from 'lucide-react';
+import { Layers, HelpCircle, ArrowRight } from 'lucide-react';
 
 export default function Phases() {
   const ref = useRef<HTMLElement>(null);
@@ -13,55 +13,47 @@ export default function Phases() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.05 }
     );
-    el.querySelectorAll('.reveal').forEach((node) => obs.observe(node));
+    el.querySelectorAll('.reveal-on-scroll').forEach((node) => obs.observe(node));
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="fases" ref={ref} className="py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="ecosistema" ref={ref} className="py-14 relative">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="reveal flex justify-center mb-3">
-            <span className="obsidian-tag">
-              <Layers size={12} className="text-purple-400" />
-              // Acompañamiento Mensual Escalable
-            </span>
+        {/* Section Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
+            <Layers size={14} />
+            <span>4. Propuesta 01 — Ecosistema Digital</span>
           </div>
-
-          <h2 className="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Tres niveles de profundidad.{' '}
-            <span className="gradient-text-purple">Un solo equipo.</span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            Tres alternativas de acompañamiento mensual
           </h2>
-
-          <p className="reveal text-slate-300 text-base sm:text-lg leading-relaxed">
-            Las fases son niveles de servicio y no se suman entre sí. Cada fase incluye la base de la anterior y escala el volumen de contenidos, la producción audiovisual, la pauta publicitaria y la tecnología web.
+          <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            Las Fases 1, 2 y 3 son alternativas de servicio y <strong>no se acumulan entre sí</strong>. Se elige una sola según la intensidad requerida.
           </p>
         </div>
 
         {/* Phase Cards Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch mb-8">
           {PHASES.map((phase, idx) => (
-            <div key={phase.id} className="reveal flex" style={{ transitionDelay: `${idx * 120}ms` }}>
-              <PhaseCard phase={phase} index={idx} isPopular={phase.isRecommended} />
-            </div>
+            <PhaseCard key={phase.id} phase={phase} index={idx} isPopular={phase.isRecommended} />
           ))}
         </div>
 
-        {/* Note Below Phases */}
-        <div className="reveal mt-10 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400 text-center sm:text-left">
-          <div className="flex items-center gap-2">
-            <HelpCircle size={15} className="text-purple-400 shrink-0" />
-            <span>¿Desea ver una comparación detallada punto por punto entre las 3 fases?</span>
+        {/* Callout to Comparator */}
+        <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-300">
+          <div className="flex items-center gap-2.5">
+            <HelpCircle size={16} className="text-[#1ED760] shrink-0" />
+            <span>¿Deseas comparar las tres fases lado a lado en una matriz resumida?</span>
           </div>
           <a
             href="#comparar"
-            className="text-purple-300 hover:text-white font-semibold underline underline-offset-4 shrink-0 transition-colors"
+            className="btn-glass text-xs py-1.5 px-4 text-white hover:text-[#1ED760] shrink-0"
           >
-            Ver tabla comparativa directa →
+            <span>Ver matriz comparativa</span>
+            <ArrowRight size={13} />
           </a>
         </div>
 

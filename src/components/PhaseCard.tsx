@@ -1,4 +1,4 @@
-import { CheckCircle2, ArrowRight, Sparkles, Video, Megaphone, Globe, Bot, Layers } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Sparkles, Video, Megaphone, Globe, Bot } from 'lucide-react';
 import type { Phase } from '../data/proposalData';
 import { getWhatsAppCustomLink } from '../data/proposalData';
 
@@ -13,113 +13,96 @@ export default function PhaseCard({ phase, isPopular }: Props) {
 
   return (
     <div
-      className={`obsidian-card rounded-3xl overflow-hidden flex flex-col justify-between transition-all relative w-full ${
+      className={`bento-card flex flex-col justify-between transition-all relative w-full ${
         isPopular
-          ? 'border-purple-500/50 shadow-[0_0_50px_rgba(139,92,246,0.22)] bg-gradient-to-b from-[#181d2f] to-[#121624]'
-          : 'border-white/[0.08]'
+          ? 'bento-card-spotlight'
+          : 'border-white/[0.08] hover:border-white/[0.18]'
       }`}
     >
-      {/* Popular / Recommended Top Badge */}
+      {/* Recommended Tag */}
       {isPopular && (
-        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-3 sm:px-4 py-1.5 text-center flex items-center justify-center gap-1.5 text-[10px] sm:text-[11px] font-bold tracking-wider text-white uppercase shadow-md">
-          <Sparkles size={12} className="shrink-0" />
-          <span>{phase.badge ?? 'Nivel Recomendado · Mayor Equilibrio'}</span>
+        <div className="bg-[#1DB954] text-black px-4 py-1 text-center flex items-center justify-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider rounded-t-[23px] shadow-[0_4px_20px_rgba(29,185,84,0.3)]">
+          <Sparkles size={13} className="shrink-0" />
+          <span>{phase.badge ?? 'Más Elegido · Recomendado'}</span>
         </div>
       )}
 
-      {/* Card Header */}
-      <div className="p-5 sm:p-7 lg:p-8 border-b border-white/[0.06]">
-        <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-3">
-          <span className={`obsidian-tag text-[10px] sm:text-xs ${isPopular ? 'obsidian-tag-purple' : ''}`}>
-            {phase.code}
+      {/* Header */}
+      <div className="p-6 sm:p-7 border-b border-white/[0.06]">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <span className={`bento-badge ${isPopular ? 'bento-badge-green font-mono' : 'text-gray-300 font-mono'}`}>
+            {phase.tag}
           </span>
-          <span className="font-mono text-[11px] text-slate-500">
-            Nivel 0{phase.id}
+          <span className="text-[11px] font-mono text-gray-500">
+            Alternativa 0{phase.id}
           </span>
         </div>
 
-        <h3 className="font-display text-lg sm:text-2xl font-bold text-white mb-1.5 leading-tight">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-1.5 leading-snug">
           {phase.name}
         </h3>
         
-        <p className="text-xs sm:text-sm text-purple-300/90 font-medium leading-relaxed mb-4 sm:mb-6">
+        <p className="text-xs sm:text-sm text-gray-300 font-medium leading-relaxed mb-5">
           {phase.concept}
         </p>
 
         {/* Pricing Block */}
-        <div className="p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
-          <div className="flex flex-wrap items-baseline gap-1.5 sm:gap-2">
-            <span className="font-mono text-2xl sm:text-4xl font-extrabold text-white">
+        <div className="p-4 rounded-2xl bg-[#090a0f]/60 border border-white/[0.06]">
+          <div className="flex flex-wrap items-baseline gap-1.5">
+            <span className="font-mono text-3xl sm:text-4xl font-extrabold text-white">
               {phase.price}
             </span>
-            <span className="font-mono text-[11px] sm:text-xs text-slate-400 font-medium">
+            <span className="font-mono text-xs font-semibold text-gray-400">
               {phase.priceSuffix}
             </span>
           </div>
-          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-1 flex items-center justify-between">
+          <div className="text-[11px] text-gray-500 mt-1 flex items-center justify-between">
             <span>Permanencia 6 meses</span>
-            <span className="text-purple-400 font-mono text-[10px]">{phase.selectionNote}</span>
+            <span className="text-[#1ED760] font-mono text-[10px]">{phase.selectionNote}</span>
           </div>
         </div>
       </div>
 
-      {/* Card Body */}
-      <div className="p-5 sm:p-7 lg:p-8 flex-1 flex flex-col justify-between">
-        
-        {/* Core Highlights */}
-        <div className="mb-5 sm:mb-6 space-y-3 sm:space-y-4">
-          <div className="text-[10px] font-mono uppercase tracking-widest text-slate-400 flex items-center justify-between">
-            <span>Alcance Principal</span>
-            <span className="text-purple-400">Entregables</span>
+      {/* Body / Highlights */}
+      <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+        <div className="space-y-4 mb-6">
+          <div className="text-[10px] font-mono uppercase tracking-widest text-gray-400 flex items-center justify-between">
+            <span>Entregables Clave</span>
+            <span className="text-[#1ED760]">Puntuales</span>
           </div>
 
-          <div className="space-y-2 sm:space-y-2.5">
+          <div className="space-y-2.5">
             {phase.keyHighlights.map((item, i) => (
-              <div key={i} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed">
-                <CheckCircle2 size={13} className="text-emerald-400 shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start gap-2.5 text-xs text-gray-300 leading-relaxed">
+                <CheckCircle2 size={14} className="text-[#1ED760] shrink-0 mt-0.5" />
                 <span>{item}</span>
               </div>
             ))}
           </div>
 
-          {/* Quick Pillar Tags */}
-          <div className="pt-3 border-t border-white/[0.05] space-y-1.5 text-xs text-slate-400">
-            <div className="flex items-start gap-2">
-              <Video size={13} className="text-cyan-400 shrink-0 mt-0.5" />
-              <span className="text-[11px] text-slate-300"><strong>Producción:</strong> {phase.audiovisual}</span>
+          {/* Pillar details */}
+          <div className="pt-3.5 border-t border-white/[0.06] space-y-2 text-xs">
+            <div className="flex items-start gap-2 text-gray-400">
+              <Video size={13} className="text-white shrink-0 mt-0.5" />
+              <span className="text-[11px]"><strong className="text-white">Audiovisual:</strong> {phase.audiovisual}</span>
             </div>
-            <div className="flex items-start gap-2">
-              <Megaphone size={13} className="text-emerald-400 shrink-0 mt-0.5" />
-              <span className="text-[11px] text-slate-300"><strong>Pauta:</strong> {phase.metaAds}</span>
+            <div className="flex items-start gap-2 text-gray-400">
+              <Megaphone size={13} className="text-[#1ED760] shrink-0 mt-0.5" />
+              <span className="text-[11px]"><strong className="text-white">Pauta Meta:</strong> {phase.metaAds}</span>
             </div>
             {phase.googleAds && (
-              <div className="flex items-start gap-2">
-                <Globe size={13} className="text-purple-400 shrink-0 mt-0.5" />
-                <span className="text-[11px] text-purple-200"><strong>Google Ads:</strong> Incluido en plan</span>
+              <div className="flex items-start gap-2 text-gray-400">
+                <Globe size={13} className="text-[#1ED760] shrink-0 mt-0.5" />
+                <span className="text-[11px] text-[#1ED760]"><strong>Google Ads:</strong> Gestión mensual incluida</span>
               </div>
             )}
             {phase.automationAI && (
-              <div className="flex items-start gap-2">
-                <Bot size={13} className="text-amber-400 shrink-0 mt-0.5" />
-                <span className="text-[11px] text-amber-200"><strong>Web + IA:</strong> Optimización y soporte</span>
+              <div className="flex items-start gap-2 text-gray-400">
+                <Bot size={13} className="text-white shrink-0 mt-0.5" />
+                <span className="text-[11px]"><strong className="text-white">Web & IA:</strong> Mantenimiento + CRO + IA</span>
               </div>
             )}
           </div>
-        </div>
-
-        {/* Novedades / What is added */}
-        <div className="mb-5 p-3 sm:p-3.5 rounded-xl bg-purple-500/[0.06] border border-purple-500/15">
-          <div className="text-[10px] font-mono uppercase tracking-wider text-purple-300 mb-1.5 flex items-center gap-1.5">
-            <Layers size={11} /> Novedades de este nivel:
-          </div>
-          <ul className="space-y-1 text-[11px] text-slate-300">
-            {phase.additions.map((add, idx) => (
-              <li key={idx} className="flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0 mt-1.5" />
-                <span>{add}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
         {/* CTA Button */}
@@ -127,16 +110,13 @@ export default function PhaseCard({ phase, isPopular }: Props) {
           href={customWhatsAppLink}
           target="_blank"
           rel="noopener noreferrer"
-          className={`w-full py-3 px-4 rounded-xl text-xs font-bold font-display tracking-wide flex items-center justify-center gap-2 transition-all min-h-[44px] ${
-            isPopular
-              ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500 shadow-[0_0_25px_rgba(139,92,246,0.35)]'
-              : 'bg-white/[0.04] border border-white/[0.1] text-white hover:bg-purple-500/10 hover:border-purple-500/30 hover:text-purple-200'
+          className={`w-full justify-center text-xs py-3 ${
+            isPopular ? 'btn-spotify' : 'btn-glass'
           }`}
         >
-          <span>{phase.cta}</span>
+          <span>Elegir Fase 0{phase.id}</span>
           <ArrowRight size={14} />
         </a>
-
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ export default function ContactForm() {
   const ref = useRef<HTMLElement>(null);
   const [form, setForm] = useState({
     nombre: '',
-    empresa: '',
+    empresa: 'Finanzas Consulting',
     cargo: '',
     whatsapp: '',
     fase: '',
@@ -29,20 +29,20 @@ export default function ContactForm() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.08 }
     );
-    el.querySelectorAll('.reveal').forEach((node) => obs.observe(node));
+    el.querySelectorAll('.reveal-on-scroll').forEach((c) => obs.observe(c));
     return () => obs.disconnect();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const msg = encodeURIComponent(
-      `Hola Punto D' Partida,\n\nSoy ${form.nombre} de ${form.empresa}${form.cargo ? ` (${form.cargo})` : ''}.\n\n*Fase de interés:* ${form.fase || 'Por definir'}\n*Necesidad / Objetivo:* ${form.necesidad || 'Conversar sobre la propuesta'}\n*WhatsApp de contacto:* ${form.whatsapp}\n\nMe gustaría coordinar una conversación para dar el siguiente paso.`
+      `Hola Punto D' Partida,\n\nSoy ${form.nombre} de ${form.empresa}${form.cargo ? ` (${form.cargo})` : ''}.\n\n*Opción de interés:* ${form.fase || 'Por definir'}\n*Comentarios / Necesidad:* ${form.necesidad || 'Coordinar inicio de propuesta'}\n*WhatsApp:* ${form.whatsapp}\n\nMe gustaría definir el siguiente paso.`
     );
     window.open(`https://wa.me/573052339865?text=${msg}`, '_blank');
   };
 
   const inputClass =
-    'w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-purple-500/60 focus:bg-white/[0.05] transition-all font-sans';
+    'w-full px-4 py-3 rounded-xl bg-[#090a0f]/80 border border-white/[0.08] text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#1DB954] focus:ring-1 focus:ring-[#1DB954] transition-all font-sans';
 
   const contactItems = [
     { Icon: Globe2, label: 'Sitio web', value: 'pdpcomunica.com' },
@@ -52,130 +52,152 @@ export default function ContactForm() {
   ];
 
   return (
-    <section id="siguiente-paso" ref={ref} className="py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" ref={ref} className="py-14 relative">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         
-        <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-start">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
           
-          {/* Left Column: Direct CTA and Context */}
-          <div>
-            <div className="reveal flex items-center gap-2 mb-4">
-              <span className="obsidian-tag">
-                <Compass size={12} className="text-purple-400" />
-                // Cierre y Siguiente Paso
-              </span>
-              <span className="obsidian-tag obsidian-tag-purple">
-                #iniciar-proyecto
-              </span>
+          {/* Left Column: 10. Siguiente Paso info (Cols 5) */}
+          <div className="lg:col-span-5 bento-card p-6 sm:p-8 flex flex-col justify-between border-white/[0.09]">
+            <div>
+              <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
+                <Compass size={14} />
+                <span>10. Siguiente paso</span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">
+                Coordinemos la etapa de inicio
+              </h2>
+
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
+                Definir la alternativa de acompañamiento de la Propuesta 01 y/o la Campaña Pymes Financiables, validar los servicios complementarios requeridos y coordinar la etapa de inicio.
+              </p>
+
+              {/* Direct WhatsApp Action Button */}
+              <div className="mb-6">
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-spotify w-full justify-center text-xs py-3"
+                >
+                  <MessageCircle size={15} />
+                  <span>Hablar directo por WhatsApp</span>
+                  <ArrowRight size={14} />
+                </a>
+              </div>
+
+              {/* Contact mini-bento grid */}
+              <div className="grid grid-cols-2 gap-2.5">
+                {contactItems.map(({ Icon, label, value }) => (
+                  <div key={label} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-2.5">
+                    <div className="w-7 h-7 rounded-lg bg-[#1DB954]/10 border border-[#1DB954]/25 flex items-center justify-center text-[#1ED760] shrink-0 mt-0.5">
+                      <Icon size={13} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-gray-400 block">{label}</span>
+                      <span className="text-xs font-bold text-white">{value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h2 className="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5">
-              Hablemos del <span className="gradient-text-purple">siguiente paso.</span>
-            </h2>
-
-            <p className="reveal text-slate-300 text-base leading-relaxed mb-8">
-              Definir el nivel de acompañamiento inicial, validar los servicios requeridos y coordinar el arranque de la etapa estratégica.
-            </p>
-
-            {/* Quick Action Button */}
-            <div className="reveal mb-8">
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary-obsidian w-full sm:w-auto text-xs py-3.5 px-6"
-              >
-                <MessageCircle size={15} />
-                <span>Agendar conversación directa</span>
-                <ArrowRight size={14} />
-              </a>
-            </div>
-
-            {/* Direct Contact Cards */}
-            <div className="reveal grid sm:grid-cols-2 gap-3">
-              {contactItems.map(({ Icon, label, value }) => (
-                <div key={label} className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
-                  <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-1">
-                    <Icon size={13} className="text-purple-400" />
-                    <span>{label}</span>
-                  </div>
-                  <div className="text-xs font-semibold text-white font-mono">
-                    {value}
-                  </div>
-                </div>
-              ))}
+            <div className="mt-6 pt-5 border-t border-white/[0.08] flex items-center justify-between">
+              <span className="text-xs font-mono text-[#1ED760]">PUNTO D’ PARTIDA</span>
+              <span className="text-[11px] text-gray-400">Creer · Crear · Crecer</span>
             </div>
           </div>
 
-          {/* Right Column: Obsidian Form */}
-          <div className="reveal obsidian-card rounded-3xl p-6 sm:p-8 border-purple-500/25">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
-              <div className="flex items-center gap-2">
-                <MessageCircle size={17} className="text-purple-400" />
-                <h3 className="font-display font-bold text-base text-white">
+          {/* Right Column: Express Form (Cols 7) */}
+          <div className="lg:col-span-7 bento-card bento-card-green-glow p-6 sm:p-8 border-white/[0.1]">
+            <div className="pb-4 mb-5 border-b border-white/[0.08] flex items-center justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-bold text-white">
                   Formulario de Contacto Rápido
                 </h3>
+                <span className="text-xs text-gray-400">
+                  Envía tus datos y te responderemos de inmediato.
+                </span>
               </div>
-              <span className="obsidian-tag obsidian-tag-emerald text-[10px]">
-                #directo-whatsapp
+              <span className="bento-badge bento-badge-green font-mono text-[10px]">
+                Express
               </span>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Nombre y Apellidos *"
-                  required
-                  value={form.nombre}
-                  onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                  className={inputClass}
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                    Nombre Completo *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ej. Álvaro"
+                    value={form.nombre}
+                    onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                    Número de WhatsApp *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Ej. +57 300 000 0000"
+                    value={form.whatsapp}
+                    onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+                    className={inputClass}
+                  />
+                </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Empresa *"
-                  required
-                  value={form.empresa}
-                  onChange={(e) => setForm({ ...form, empresa: e.target.value })}
-                  className={inputClass}
-                />
-                <input
-                  type="text"
-                  placeholder="Cargo (opcional)"
-                  value={form.cargo}
-                  onChange={(e) => setForm({ ...form, cargo: e.target.value })}
-                  className={inputClass}
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                    Empresa
+                  </label>
+                  <input
+                    type="text"
+                    value={form.empresa}
+                    onChange={(e) => setForm({ ...form, empresa: e.target.value })}
+                    className={inputClass}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                    Cargo / Rol
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ej. Gerente / Director"
+                    value={form.cargo}
+                    onChange={(e) => setForm({ ...form, cargo: e.target.value })}
+                    className={inputClass}
+                  />
+                </div>
               </div>
 
               <div>
-                <input
-                  type="tel"
-                  placeholder="Número de WhatsApp *"
-                  required
-                  value={form.whatsapp}
-                  onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-                  className={inputClass}
-                />
-              </div>
-
-              <div>
+                <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                  Alternativa o Servicio de Interés
+                </label>
                 <select
                   value={form.fase}
                   onChange={(e) => setForm({ ...form, fase: e.target.value })}
-                  className={`${inputClass} text-slate-300 cursor-pointer`}
-                  required
+                  className={`${inputClass} cursor-pointer`}
                 >
-                  <option value="" disabled className="bg-[#0b0e14] text-slate-500">
-                    Seleccione la fase o servicio de interés *
+                  <option value="" className="bg-[#12151c] text-gray-400">
+                    Selecciona una opción...
                   </option>
                   {PHASE_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt} className="bg-[#121622] text-white">
+                    <option key={opt} value={opt} className="bg-[#12151c] text-white">
                       {opt}
                     </option>
                   ))}
@@ -183,31 +205,29 @@ export default function ContactForm() {
               </div>
 
               <div>
+                <label className="block text-xs font-mono text-gray-400 uppercase tracking-wider mb-1.5">
+                  Mensaje o Consulta Específica (Opcional)
+                </label>
                 <textarea
-                  placeholder="¿Qué objetivo o necesidad principal desea potenciar?"
                   rows={3}
+                  placeholder="Escribe aquí cualquier duda o requerimiento especial..."
                   value={form.necesidad}
                   onChange={(e) => setForm({ ...form, necesidad: e.target.value })}
-                  className={`${inputClass} resize-none`}
+                  className={inputClass}
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn-primary-obsidian w-full py-3.5 text-xs justify-center font-bold"
+                className="btn-spotify w-full justify-center py-3 text-xs font-bold cursor-pointer"
               >
+                <span>Enviar Solicitud a WhatsApp</span>
                 <Send size={14} />
-                <span>Enviar datos y abrir WhatsApp</span>
               </button>
-
-              <p className="text-[10px] font-mono text-slate-500 text-center leading-relaxed">
-                Al hacer clic, se abrirá un chat de WhatsApp con los datos completados para iniciar la coordinación.
-              </p>
             </form>
           </div>
 
         </div>
-
       </div>
     </section>
   );

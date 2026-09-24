@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { INVESTMENT_SUMMARY } from '../data/proposalData';
-import { Receipt, AlertTriangle, CheckCircle2, ShieldCheck, Info } from 'lucide-react';
+import { Receipt, Info } from 'lucide-react';
 
 export default function InvestmentSummary() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -12,7 +12,7 @@ export default function InvestmentSummary() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.08 }
     );
-    el.querySelectorAll('.reveal').forEach((c) => obs.observe(c));
+    el.querySelectorAll('.reveal-on-scroll').forEach((c) => obs.observe(c));
     return () => obs.disconnect();
   }, []);
 
@@ -20,158 +20,121 @@ export default function InvestmentSummary() {
   const oneOff = INVESTMENT_SUMMARY.filter((item) => !item.suffix.includes('/ mes'));
 
   return (
-    <section id="inversion" ref={ref} className="py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <div id="inversion-resumen" ref={ref} className="mb-10">
+      <div className="bento-card p-6 sm:p-8 lg:p-10 border-white/[0.09]">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="reveal flex justify-center mb-3">
-            <span className="obsidian-tag">
-              <Receipt size={12} className="text-purple-400" />
-              // Cuadro Consolidado de Inversión
-            </span>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-1">
+              <Receipt size={14} />
+              <span>7. Inversión — Resumen Oficial</span>
+            </div>
+            <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight">
+              Tabla consolidada de valores
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-400 mt-0.5">
+              Resumen oficial de inversiones para cada alternativa y servicio presentado en la propuesta.
+            </p>
           </div>
-
-          <h2 className="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Lectura consolidada <span className="gradient-text-purple">de la inversión.</span>
-          </h2>
-
-          <p className="reveal text-slate-300 text-base sm:text-lg leading-relaxed">
-            Resumen de las inversiones correspondientes a las alternativas y servicios presentados.
-          </p>
+          <span className="bento-badge text-gray-300 self-start md:self-auto font-mono text-[11px]">
+            Valores en COP + IVA
+          </span>
         </div>
 
-        {/* 2 Grid Columns */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          
-          {/* Monthly Plans */}
-          <div className="reveal obsidian-card rounded-3xl p-6 sm:p-8 border-purple-500/25">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
-              <div>
-                <span className="text-[10px] font-mono text-purple-400 uppercase tracking-widest">
-                  Propuesta 01 — Acompañamiento Mensual
+        {/* 2 Bento Columns: Recurrente vs Pago Único */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          {/* Acompañamiento Mensual */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#090a0f]/50 border border-white/[0.07] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.06]">
+                <span className="text-xs font-mono font-bold uppercase text-white tracking-wider">
+                  Acompañamiento Mensual (Propuesta 01)
                 </span>
-                <h3 className="font-display text-xl font-bold text-white mt-0.5">
-                  Fases Mensuales (Se elige una sola)
-                </h3>
-              </div>
-              <span className="obsidian-tag obsidian-tag-purple text-[10px]">
-                No acumulativas
-              </span>
-            </div>
-
-            <div className="space-y-3.5">
-              {recurring.map((item) => (
-                <div
-                  key={item.label}
-                  className={`p-4 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
-                    item.recommended
-                      ? 'bg-purple-500/15 border-purple-500/40 shadow-[0_0_20px_rgba(139,92,246,0.15)]'
-                      : 'bg-white/[0.02] border-white/[0.05]'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-white">{item.label}</span>
-                      {item.recommended && (
-                        <span className="px-1.5 py-0.5 rounded text-[9px] bg-purple-500/25 text-purple-200 font-mono font-bold uppercase">
-                          ★ Más Elegido
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-[11px] font-mono text-purple-300/80 mt-0.5 block">
-                      {item.note}
-                    </span>
-                  </div>
-
-                  <div className="sm:text-right shrink-0">
-                    <span className="font-mono text-xl font-bold text-white">{item.price}</span>
-                    <span className="block font-mono text-[10px] text-slate-400">{item.suffix}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4 p-3 rounded-xl bg-purple-500/[0.05] border border-purple-500/15 text-[11px] text-slate-300 leading-relaxed flex items-center gap-2">
-              <Info size={14} className="text-purple-400 shrink-0" />
-              <span>Las Fases 1, 2 y 3 no se suman entre sí: se elige una sola alternativa de servicio.</span>
-            </div>
-          </div>
-
-          {/* One-off & Independent Implementations */}
-          <div className="reveal obsidian-card rounded-3xl p-6 sm:p-8 border-cyan-500/25">
-            <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
-              <div>
-                <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
-                  Pagos Únicos & Campaña Independiente
+                <span className="text-[10px] font-mono text-[#1ED760] bg-[#1DB954]/15 px-2 py-0.5 rounded-full border border-[#1DB954]/30">
+                  Se elige una
                 </span>
-                <h3 className="font-display text-xl font-bold text-white mt-0.5">
-                  Etapa Base, Servicios & Pymes
-                </h3>
               </div>
-              <span className="obsidian-tag obsidian-tag-cyan text-[10px]">
-                4 conceptos
-              </span>
-            </div>
 
-            <div className="space-y-3.5">
-              {oneOff.map((item) => (
-                <div
-                  key={item.label}
-                  className={`p-4 rounded-2xl border transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
-                    item.highlight
-                      ? 'bg-amber-500/[0.08] border-amber-500/30'
-                      : 'bg-white/[0.02] border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-start gap-2.5">
-                    {item.highlight ? (
-                      <AlertTriangle size={15} className="text-amber-400 shrink-0 mt-0.5" />
-                    ) : (
-                      <CheckCircle2 size={15} className="text-cyan-400 shrink-0 mt-0.5" />
-                    )}
+              <div className="space-y-3">
+                {recurring.map((item) => (
+                  <div
+                    key={item.label}
+                    className={`p-3.5 rounded-xl border transition-all flex items-center justify-between gap-3 ${
+                      item.recommended
+                        ? 'bg-[#1DB954]/10 border-[#1DB954]/40 shadow-[0_0_20px_rgba(29,185,84,0.15)]'
+                        : 'bg-white/[0.02] border-white/[0.05]'
+                    }`}
+                  >
                     <div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-bold text-white">{item.label}</span>
-                        {item.highlight && (
-                          <span className="px-1.5 py-0.5 rounded text-[8px] bg-amber-500/20 text-amber-300 font-mono font-bold uppercase">
-                            Obligatoria
+                        {item.recommended && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#1DB954] text-black font-mono font-extrabold uppercase">
+                            Recomendada
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] font-mono text-slate-400 mt-0.5 block">
+                      <span className="text-[11px] font-mono text-gray-400 mt-0.5 block">
                         {item.note}
                       </span>
                     </div>
-                  </div>
 
-                  <div className="sm:text-right shrink-0">
-                    <span className="font-mono text-xl font-bold text-white">{item.price}</span>
-                    <span className="block font-mono text-[10px] text-slate-400">{item.suffix}</span>
+                    <div className="text-right shrink-0">
+                      <span className="font-mono text-base sm:text-lg font-bold text-white">{item.price}</span>
+                      <span className="block font-mono text-[10px] text-gray-400">{item.suffix}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="mt-4 p-3 rounded-xl bg-cyan-500/[0.05] border border-cyan-500/15 text-[11px] text-slate-300 leading-relaxed flex items-center gap-2">
-              <Info size={14} className="text-cyan-400 shrink-0" />
-              <span>Los servicios complementarios y la Campaña Pymes Financiables se adicionan solo cuando sean contratados.</span>
+            <div className="mt-4 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-[11px] text-gray-400 flex items-center gap-2">
+              <Info size={14} className="text-[#1ED760] shrink-0" />
+              <span>Las Fases 1, 2 y 3 no se suman entre sí. Permanencia mínima: 6 meses.</span>
             </div>
           </div>
 
-        </div>
+          {/* Pagos Únicos e Independientes */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-[#090a0f]/50 border border-white/[0.07] flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.06]">
+                <span className="text-xs font-mono font-bold uppercase text-white tracking-wider">
+                  Etapa Inicial, Complementarios & Campaña
+                </span>
+                <span className="text-[10px] font-mono text-gray-400 bg-white/[0.05] px-2 py-0.5 rounded-full border border-white/[0.08]">
+                  Pago Único
+                </span>
+              </div>
 
-        {/* Media Budget Clarification Notice (Section 7 of docx) */}
-        <div className="reveal mt-8 obsidian-callout obsidian-callout-warning flex items-start gap-3.5">
-          <ShieldCheck size={20} className="text-amber-400 shrink-0 mt-0.5" />
-          <div className="text-xs text-slate-200 leading-relaxed">
-            <strong className="text-amber-200">Inversión en pauta publicitaria:</strong> La pauta publicitaria no está incluida en los honorarios. El presupuesto destinado a Meta Ads y Google Ads será asumido directamente por Finanzas Consulting y se definirá según la estrategia, objetivo y alcance de cada campaña.
+              <div className="space-y-3">
+                {oneOff.map((item) => (
+                  <div
+                    key={item.label}
+                    className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between gap-3"
+                  >
+                    <div>
+                      <div className="text-xs font-bold text-white">{item.label}</div>
+                      <span className="text-[11px] font-mono text-gray-400 mt-0.5 block">
+                        {item.note}
+                      </span>
+                    </div>
+
+                    <div className="text-right shrink-0">
+                      <span className="font-mono text-base sm:text-lg font-bold text-white">{item.price}</span>
+                      <span className="block font-mono text-[10px] text-gray-400">{item.suffix}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05] text-[11px] text-gray-400 flex items-center gap-2">
+              <Info size={14} className="text-[#1ED760] shrink-0" />
+              <span>La inversión publicitaria (pauta Meta / Google) es asumida directamente por el cliente.</span>
+            </div>
           </div>
         </div>
-
       </div>
-    </section>
+    </div>
   );
 }

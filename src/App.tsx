@@ -8,19 +8,19 @@ import Footer from './components/Footer';
 const ProjectStart = lazy(() => import('./components/ProjectStart'));
 const Phases = lazy(() => import('./components/Phases'));
 const PhaseComparator = lazy(() => import('./components/PhaseComparator'));
-const PymesFinanciables = lazy(() => import('./components/PymesFinanciables'));
 const AdditionalServices = lazy(() => import('./components/AdditionalServices'));
-const InvestmentCalculator = lazy(() => import('./components/InvestmentCalculator'));
-const ClientRequirements = lazy(() => import('./components/ClientRequirements'));
-const Team = lazy(() => import('./components/Team'));
+const PymesFinanciables = lazy(() => import('./components/PymesFinanciables'));
 const InvestmentSummary = lazy(() => import('./components/InvestmentSummary'));
+const InvestmentCalculator = lazy(() => import('./components/InvestmentCalculator'));
+const Team = lazy(() => import('./components/Team'));
+const ClientRequirements = lazy(() => import('./components/ClientRequirements'));
 const Conditions = lazy(() => import('./components/Conditions'));
 const ContactForm = lazy(() => import('./components/ContactForm'));
 
 function LazyFallback() {
   return (
-    <div className="flex items-center justify-center py-24">
-      <div className="w-8 h-8 border-2 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+    <div className="flex items-center justify-center py-20">
+      <div className="w-8 h-8 border-2 border-[#1DB954]/20 border-t-[#1DB954] rounded-full animate-spin" />
     </div>
   );
 }
@@ -52,42 +52,45 @@ export default function App() {
 
       <Navbar />
 
-      <main className="relative z-10">
+      <main className="relative z-10 pb-20 md:pb-12">
+        {/* 1. Contexto & 2. Objetivo */}
         <Hero />
+
+        {/* 3. Cómo está estructurada la propuesta */}
         <ProposalOverview />
         
         <Suspense fallback={<LazyFallback />}>
-          {/* Track 1: Ecosistema Digital */}
-          <div id="propuesta-ecosistema">
+          {/* 4. Propuesta 01 — Ecosistema Digital */}
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <ProjectStart />
-            <Phases />
+          </div>
+          <Phases />
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <PhaseComparator />
           </div>
 
-          {/* Track 2: Campaña Pymes Financiables */}
-          <div id="propuesta-pymes">
-            <PymesFinanciables />
-          </div>
-
-          {/* Servicios Complementarios */}
+          {/* 5. Servicios Complementarios */}
           <AdditionalServices />
 
-          {/* Simulador Interactivo de Inversión */}
+          {/* 6. Propuesta 02 — Campaña Pymes Financiables */}
+          <PymesFinanciables />
+
+          {/* 7. Inversión (Resumen Oficial + Simulador Interactivo) */}
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+            <InvestmentSummary />
+          </div>
           <InvestmentCalculator />
 
-          {/* Requerimientos Previos para Iniciar */}
-          <ClientRequirements />
-
-          {/* Equipo Multidisciplinario */}
+          {/* 8. Ecosistema de trabajo y relación entre las propuestas */}
           <Team />
 
-          {/* Cuadro Oficial de Inversión */}
-          <InvestmentSummary />
-
-          {/* Condiciones Contractuales */}
+          {/* 9. Requerimientos, condiciones y alcance */}
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+            <ClientRequirements />
+          </div>
           <Conditions />
 
-          {/* Formulario y Cierre */}
+          {/* 10. Siguiente paso */}
           <ContactForm />
         </Suspense>
       </main>
@@ -96,7 +99,7 @@ export default function App() {
       <WhatsAppFloat />
 
       {/* Mobile Sticky Action Bar */}
-      <div className="mobile-cta-rail-obsidian" aria-label="Acciones rápidas móviles">
+      <div className="mobile-cta-rail-bento" aria-label="Acciones rápidas móviles">
         <a
           href="#comparar"
           className="bg-white/[0.06] border border-white/[0.1] text-white flex items-center justify-center"
@@ -104,8 +107,8 @@ export default function App() {
           Comparar Fases
         </a>
         <a
-          href="#siguiente-paso"
-          className="btn-primary-obsidian justify-center"
+          href="#contacto"
+          className="btn-spotify justify-center"
         >
           Hablar con el equipo
         </a>

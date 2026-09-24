@@ -17,18 +17,15 @@ export const WHATSAPP_LINK = getWhatsAppCustomLink();
 
 // ---- Navegación ----
 export const NAV_ITEMS = [
-  { label: 'Inicio', href: '#inicio' },
-  { label: 'Rutas', href: '#propuestas' },
-  { label: 'Etapa Base', href: '#inicio-proyecto' },
-  { label: 'Fases Mensuales', href: '#fases' },
-  { label: 'Comparador', href: '#comparar' },
-  { label: 'Pymes Financiables', href: '#pymes' },
-  { label: 'Servicios Extra', href: '#adicionales' },
-  { label: 'Simulador', href: '#calculadora' },
-  { label: 'Requerimientos', href: '#requerimientos' },
-  { label: 'Inversión', href: '#inversion' },
-  { label: 'Condiciones', href: '#condiciones' },
-  { label: 'Contacto', href: '#siguiente-paso' },
+  { label: '01. Objetivo', href: '#objetivo' },
+  { label: '02. Estructura', href: '#estructura' },
+  { label: '03. Ecosistema Digital', href: '#ecosistema' },
+  { label: '04. Servicios Extra', href: '#complementarios' },
+  { label: '05. Pymes Financiables', href: '#pymes' },
+  { label: '06. Inversión & Simulador', href: '#inversion' },
+  { label: '07. Equipo', href: '#equipo' },
+  { label: '08. Requerimientos & Reglas', href: '#condiciones' },
+  { label: '09. Siguiente Paso', href: '#contacto' },
 ] as const;
 
 // ---- Track 1: Etapa Inicial Obligatoria ----

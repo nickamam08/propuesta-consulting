@@ -14,37 +14,30 @@ export default function AdditionalServices() {
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
       { threshold: 0.08 }
     );
-    el.querySelectorAll('.reveal').forEach((c) => obs.observe(c));
+    el.querySelectorAll('.reveal-on-scroll').forEach((c) => obs.observe(c));
     return () => obs.disconnect();
   }, []);
 
   return (
-    <section id="adicionales" ref={ref} className="py-20 md:py-28 relative">
-      <div className="section-divider-obsidian mb-20" />
-
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="complementarios" ref={ref} className="py-14 relative">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="reveal flex justify-center mb-3">
-            <span className="obsidian-tag">
-              <Wrench size={12} className="text-purple-400" />
-              // Implementaciones Independientes
-            </span>
+        <div className="mb-8">
+          <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
+            <Wrench size={14} />
+            <span>5. Servicios complementarios</span>
           </div>
-
-          <h2 className="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
-            Servicios complementarios{' '}
-            <span className="gradient-text-purple">e independientes.</span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            Módulos técnicos especializados
           </h2>
-
-          <p className="reveal text-slate-300 text-base sm:text-lg leading-relaxed">
-            Módulos técnicos especializados de pago único que pueden contratarse por separado o sumarse a cualquiera de las fases del ecosistema.
+          <p className="text-sm text-gray-400 mt-1 max-w-2xl">
+            No constituyen una cuarta fase. Pueden contratarse junto con Fase 3 o de manera independiente según la prioridad.
           </p>
         </div>
 
-        {/* 2 Service Cards */}
-        <div className="grid md:grid-cols-2 gap-7">
+        {/* 2 Bento Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {ADDITIONAL_SERVICES.map((service, i) => {
             const Icon = ICONS[i] ?? Search;
             const waLink = getWhatsAppCustomLink(`Hola, me interesa consultar el servicio de: ${service.title} (${service.price} ${service.priceSuffix})`);
@@ -52,21 +45,20 @@ export default function AdditionalServices() {
             return (
               <div
                 key={service.id}
-                className="reveal obsidian-card rounded-3xl p-7 sm:p-9 flex flex-col justify-between border-purple-500/20"
-                style={{ transitionDelay: `${i * 120}ms` }}
+                className="bento-card p-6 sm:p-8 flex flex-col justify-between border-white/[0.09] hover:border-[#1DB954]/30"
               >
                 <div>
                   {/* Top Bar */}
-                  <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/[0.06]">
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.06]">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-purple-500/15 border border-purple-500/25 flex items-center justify-center text-purple-300">
+                      <div className="w-10 h-10 rounded-xl bg-[#1DB954]/10 border border-[#1DB954]/30 flex items-center justify-center text-[#1ED760]">
                         <Icon size={20} />
                       </div>
                       <div>
-                        <span className="obsidian-tag obsidian-tag-cyan text-[10px]">
+                        <span className="bento-badge bento-badge-green font-mono text-[10px]">
                           {service.tag}
                         </span>
-                        <h3 className="font-display text-xl font-bold text-white mt-1">
+                        <h3 className="text-lg sm:text-xl font-bold text-white mt-1">
                           {service.title}
                         </h3>
                       </div>
@@ -74,57 +66,56 @@ export default function AdditionalServices() {
                   </div>
 
                   {/* Price Tag */}
-                  <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] mb-6">
+                  <div className="p-4 rounded-2xl bg-[#090a0f]/60 border border-white/[0.06] mb-5">
                     <div className="flex items-baseline gap-2">
-                      <span className="font-mono text-3xl font-extrabold text-white">
+                      <span className="font-mono text-2xl sm:text-3xl font-extrabold text-white">
                         {service.price}
                       </span>
-                      <span className="font-mono text-xs text-purple-300 font-semibold">
+                      <span className="font-mono text-xs text-[#1ED760] font-semibold">
                         {service.priceSuffix}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                    <p className="text-xs text-gray-300 mt-2 leading-relaxed">
                       {service.description}
                     </p>
                   </div>
 
-                  {/* Highlights */}
-                  <div className="mb-6 space-y-2.5">
-                    <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">
-                      Alcance detallado:
+                  {/* Scope List */}
+                  <div className="mb-5 space-y-2">
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-gray-400">
+                      Alcance del módulo:
                     </div>
                     {service.scope.map((item, j) => (
-                      <div key={j} className="flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed">
-                        <CheckCircle2 size={14} className="text-emerald-400 shrink-0 mt-0.5" />
+                      <div key={j} className="flex items-start gap-2.5 text-xs text-gray-300 leading-relaxed">
+                        <CheckCircle2 size={13} className="text-[#1ED760] shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Disclaimer & CTA */}
-                <div className="pt-4 border-t border-white/[0.06] space-y-4">
-                  <div className="flex items-start gap-2 text-[11px] text-slate-400 bg-amber-500/[0.05] border border-amber-500/15 p-3 rounded-xl">
-                    <Info size={14} className="text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  {/* Disclaimer / Note */}
+                  <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-2 text-[11px] text-gray-400 mb-5">
+                    <Info size={14} className="text-gray-400 shrink-0 mt-0.5" />
                     <span>{service.disclaimer}</span>
                   </div>
 
+                  {/* Button */}
                   <a
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary-obsidian w-full text-xs justify-center"
+                    className="btn-glass w-full justify-center text-xs py-2.5 hover:border-[#1DB954]/40"
                   >
-                    <span>Consultar {service.title}</span>
-                    <ArrowRight size={14} />
+                    <span>Cotizar {service.title}</span>
+                    <ArrowRight size={14} className="text-[#1ED760]" />
                   </a>
                 </div>
-
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
