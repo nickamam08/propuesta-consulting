@@ -27,23 +27,26 @@
 
     .page {
       width: 210mm;
-      height: 297mm;
-      max-height: 297mm;
+      height: 296mm;
+      max-height: 296mm;
       box-sizing: border-box;
-      padding: 12mm 14mm 12mm 14mm;
-      page-break-after: always;
-      break-after: page;
+      padding: 12mm 15mm 11mm 15mm;
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       background: #f8fafc;
       overflow: hidden;
     }
 
-    .page:last-child {
-      page-break-after: avoid;
-      break-after: avoid;
+    .page:not(:last-of-type) {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page:last-of-type {
+      page-break-after: avoid !important;
+      break-after: avoid !important;
     }
 
     /* Header & Footer */
@@ -51,14 +54,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 8px;
+      padding-bottom: 9px;
       border-bottom: 1.5px solid #1DB954;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .doc-header .brand {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 800;
       letter-spacing: 0.5px;
       color: #0f172a;
@@ -74,15 +77,16 @@
       font-family: 'JetBrains Mono', monospace;
       color: #64748b;
       text-transform: uppercase;
+      letter-spacing: 0.4px;
     }
 
     .doc-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 8px;
+      padding-top: 9px;
       border-top: 1px solid #e2e8f0;
-      margin-top: 10px;
+      margin-top: auto;
       font-size: 9px;
       color: #64748b;
       font-family: 'JetBrains Mono', monospace;
@@ -92,7 +96,8 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
+      gap: 13px;
     }
 
     /* Bento Cards */
@@ -100,8 +105,8 @@
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
-      padding: 12px 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      padding: 13px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
     }
 
     .bento-spotlight {
@@ -112,7 +117,7 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
       padding: 3px 8px;
       border-radius: 9999px;
       font-size: 8.5px;
@@ -138,15 +143,15 @@
 
     h1 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.18;
       color: #0f172a;
     }
 
     h2 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 700;
       color: #0f172a;
       line-height: 1.25;
@@ -154,33 +159,33 @@
 
     h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #0f172a;
     }
 
     p {
       font-size: 10px;
-      line-height: 1.45;
+      line-height: 1.48;
       color: #334155;
     }
 
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
+      gap: 11px;
     }
 
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+      gap: 9px;
     }
 
     .check-item {
@@ -189,7 +194,7 @@
       gap: 6px;
       font-size: 9.5px;
       color: #334155;
-      line-height: 1.35;
+      line-height: 1.38;
     }
 
     .check-icon {
@@ -220,14 +225,14 @@
       color: #475569;
       font-weight: 700;
       text-align: left;
-      padding: 6px 8px;
+      padding: 6px 9px;
       border: 1px solid #e2e8f0;
       font-family: 'JetBrains Mono', monospace;
       font-size: 8.5px;
     }
 
     td {
-      padding: 5.5px 8px;
+      padding: 5.5px 9px;
       border: 1px solid #e2e8f0;
       color: #334155;
     }
@@ -249,17 +254,18 @@
     .note-box {
       background: #f8fafc;
       border-left: 3px solid #1DB954;
-      padding: 6px 10px;
+      padding: 7px 11px;
       font-size: 9px;
       color: #475569;
       border-radius: 0 6px 6px 0;
+      line-height: 1.42;
     }
   </style>
 </head>
 <body>
 
   <!-- ==========================================
-       PÁGINA 1: PORTADA & ESTRUCTURA
+       PÁGINA 1: PORTADA, ESTRATEGIA & ETAPA INICIAL
        ========================================== -->
   <div class="page">
     <div class="doc-header">
@@ -267,177 +273,192 @@
       <div class="tag">PROPUESTA COMERCIAL · CONFIDENCIAL</div>
     </div>
 
-    <div class="page-content" style="gap: 12px;">
+    <div class="page-content" style="gap: 14px;">
       <!-- Hero Box -->
-      <div class="bento bento-spotlight" style="padding: 18px 20px;">
-        <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+      <div class="bento bento-spotlight" style="padding: 16px 18px;">
+        <div style="display: flex; gap: 7px; margin-bottom: 7px;">
           <span class="badge badge-green">PUNTO D' PARTIDA × FINANZAS CONSULTING</span>
           <span class="badge">PROPUESTA COMERCIAL</span>
         </div>
         <h1>De conocimiento financiero a <span style="color: #169c46;">ecosistema digital</span></h1>
-        <p style="font-weight: 600; color: #475569; margin-top: 4px; font-size: 11px;">
-          Estrategia · Contenido · Audiovisual · Publicidad · Desarrollo · Automatización
+        <p style="font-weight: 600; color: #475569; margin-top: 4px; font-size: 10.5px;">
+          Estrategia · Contenido · Audiovisual · Publicidad · Desarrollo Web · Automatización
         </p>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <div style="flex: 1; background: #ffffff; border: 1px solid #bbf7d0; border-radius: 7px; padding: 6px 9px; font-size: 9px;">
+            <strong style="color: #166534;">Estrategia 360°</strong>: Ruta de captación clara
+          </div>
+          <div style="flex: 1; background: #ffffff; border: 1px solid #bbf7d0; border-radius: 7px; padding: 6px 9px; font-size: 9px;">
+            <strong style="color: #166534;">Producción 4K</strong>: Jornadas completas en Medellín
+          </div>
+          <div style="flex: 1; background: #ffffff; border: 1px solid #bbf7d0; border-radius: 7px; padding: 6px 9px; font-size: 9px;">
+            <strong style="color: #166534;">Pauta Calificada</strong>: Meta Ads & Google Ads
+          </div>
+        </div>
       </div>
 
       <!-- Contexto & Objetivo -->
-      <div class="grid-2" style="gap: 10px;">
-        <div class="bento">
-          <span class="badge badge-green" style="margin-bottom: 6px;">Contexto</span>
+      <div class="grid-2">
+        <div class="bento" style="padding: 14px 16px;">
+          <span class="badge badge-green" style="margin-bottom: 6px;">Contexto del Negocio</span>
           <h2>Transformar conocimiento en oportunidades</h2>
-          <p style="margin-top: 4px;">
+          <p style="margin-top: 5px;">
             Finanzas Consulting cuenta con conocimiento y experiencia que pueden convertirse en una presencia digital más estructurada, visible y orientada a captar clientes calificados de forma progresiva.
           </p>
-          <div style="margin-top: 8px; font-size: 9px; color: #64748b; font-weight: 600;">
-            Metodología: <span style="color: #0f172a;">Progresiva & Escalable</span>
+          <div style="margin-top: 9px; font-size: 8.5px; color: #64748b; font-weight: 600; background: #f8fafc; padding: 5px 8px; border-radius: 5px; border: 1px solid #e2e8f0;">
+            Metodología: <span style="color: #0f172a; font-weight: 700;">Progresiva, Modular & Escalable</span>
           </div>
         </div>
 
-        <div class="bento">
+        <div class="bento" style="padding: 14px 16px;">
           <span class="badge badge-green" style="margin-bottom: 6px;">Objetivo Estratégico</span>
           <h2>Construir y escalar el ecosistema</h2>
-          <p style="margin-top: 4px;">
-            Posicionar la marca, educar a la audiencia, demostrar experiencia, conectar con potenciales clientes y apoyar la captación y conversión.
+          <p style="margin-top: 5px;">
+            Posicionar la marca, educar a la audiencia, demostrar experiencia, conectar con potenciales clientes y apoyar la captación y conversión comercial.
           </p>
-          <div style="margin-top: 8px; font-size: 9px; font-weight: 700; color: #166534; font-family: 'JetBrains Mono', monospace;">
+          <div style="margin-top: 9px; font-size: 8.5px; font-weight: 700; color: #166534; font-family: 'JetBrains Mono', monospace; background: #f0fdf4; padding: 5px 8px; border-radius: 5px; border: 1px solid #86efac;">
             POSICIONAR → EDUCAR → DEMOSTRAR → CONECTAR → CAPTAR → CONVERTIR
           </div>
         </div>
       </div>
 
       <!-- Estructura de la Propuesta -->
-      <div class="bento">
+      <div class="bento" style="padding: 14px 16px;">
         <span class="badge" style="margin-bottom: 6px;">Estructura de la propuesta</span>
         <h2>Dos rutas claras e independientes</h2>
-        <p style="margin-bottom: 10px;">Finanzas Consulting puede elegir entre un acompañamiento mensual continuo o una campaña de aceleración comercial puntual:</p>
+        <p style="margin-bottom: 9px;">Finanzas Consulting puede elegir entre un acompañamiento mensual continuo o una campaña de aceleración puntual:</p>
 
         <div class="grid-2">
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 9px 12px;">
             <div style="font-weight: 700; font-size: 11px; color: #0f172a;">Ecosistema Digital Continuo</div>
-            <div style="font-size: 9px; color: #64748b; margin-top: 2px;">Acompañamiento Mensual Escalable</div>
-            <p style="margin-top: 4px; font-size: 9px;">Tres alternativas mensuales (Fase 1, 2 o 3). Se elige una sola opción. Incluye construcción de marca, producción, gestión de pauta y optimización constante.</p>
-            <div style="margin-top: 6px; font-size: 9px; font-weight: 700; color: #166534;">• Etapa Inicial Base ($1.7M) + Fase elegida ($2.4M – $4.4M/mes)</div>
+            <div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">Acompañamiento Mensual Escalable</div>
+            <p style="margin-top: 4px; font-size: 8.5px;">Tres alternativas mensuales (Fase 1, 2 o 3). Se elige una sola opción. Incluye construcción de marca, producción, gestión de pauta y optimización constante.</p>
+            <div style="margin-top: 6px; font-size: 8.5px; font-weight: 700; color: #166534;">• Etapa Inicial Base ($1.7M) + Fase elegida ($2.4M – $4.4M/mes)</div>
           </div>
 
-          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px;">
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 9px 12px;">
             <div style="font-weight: 700; font-size: 11px; color: #0f172a;">Campaña Pymes Financiables</div>
-            <div style="font-size: 9px; color: #64748b; margin-top: 2px;">Campaña Puntual Independiente</div>
-            <p style="margin-top: 4px; font-size: 9px;">Campaña puntual orientada a producir, publicar y promocionar la iniciativa en Facebook e Instagram mediante Meta Ads. Puede contratarse de manera independiente.</p>
-            <div style="margin-top: 6px; font-size: 9px; font-weight: 700; color: #166534;">• Inversión Única: $3.800.000 + IVA</div>
+            <div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">Campaña Puntual Independiente</div>
+            <p style="margin-top: 4px; font-size: 8.5px;">Campaña puntual orientada a producir, publicar y promocionar la iniciativa en Facebook e Instagram mediante Meta Ads. Puede contratarse de manera independiente.</p>
+            <div style="margin-top: 6px; font-size: 8.5px; font-weight: 700; color: #166534;">• Inversión Única: $3.800.000 + IVA</div>
           </div>
-        </div>
-
-        <div class="note-box" style="margin-top: 8px;">
-          <strong>Regla clave:</strong> En el Ecosistema Digital, la Etapa Inicial no es una cuarta opción: es el punto de partida obligatorio para iniciar Fase 1, 2 o 3. Los servicios de Google Ads y Web+IA son complementarios e independientes.
         </div>
       </div>
-    </div>
 
-    <div class="doc-footer">
-      <div>Finanzas Consulting × Punto D' Partida</div>
-      <div>Página 1 de 5</div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       PÁGINA 2: ECOSISTEMA DIGITAL (ETAPA BASE + FASES + COMPARATIVA)
-       ========================================== -->
-  <div class="page">
-    <div class="doc-header">
-      <div class="brand">PUNTO D' PARTIDA <span>×</span> FINANZAS CONSULTING</div>
-      <div class="tag">ECOSISTEMA DIGITAL · ETAPA BASE & FASES</div>
-    </div>
-
-    <div class="page-content" style="gap: 10px;">
-      <!-- Etapa Inicial -->
-      <div class="bento bento-spotlight" style="padding: 10px 14px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+      <!-- Etapa Inicial Obligatoria -->
+      <div class="bento bento-spotlight" style="padding: 13px 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 7px;">
           <div>
-            <span class="badge badge-green">ETAPA INICIAL OBLIGATORIA</span>
-            <h2 style="margin-top: 2px;">Construcción estratégica + configuración</h2>
-            <p style="font-size: 9.5px;">Estructura la base digital, perfiles, WhatsApp, accesos y lineamientos antes de la pauta.</p>
+            <span class="badge badge-green">ETAPA INICIAL OBLIGATORIA (ECOSISTEMA)</span>
+            <h2 style="margin-top: 3px; font-size: 14px;">Construcción estratégica + configuración base</h2>
+            <p style="font-size: 9px; margin-top: 2px;">Estructura la base digital, perfiles, WhatsApp, accesos y lineamientos antes de iniciar pauta o producción.</p>
           </div>
           <div style="text-align: right;">
             <div class="price-tag">$1.700.000</div>
             <div class="price-sub">+ IVA · Pago único (15–20 días)</div>
           </div>
         </div>
-        <div class="grid-4" style="margin-top: 8px; font-size: 8.5px;">
+        <div class="grid-4" style="font-size: 8.5px; gap: 7px;">
           <div class="check-item"><span class="check-icon">✓</span> Análisis y públicos</div>
           <div class="check-item"><span class="check-icon">✓</span> Brief y ruta de conversión</div>
           <div class="check-item"><span class="check-icon">✓</span> Auditoría activos digitales</div>
           <div class="check-item"><span class="check-icon">✓</span> Setup FB, IG, TikTok, LinkedIn</div>
-          <div class="check-item"><span class="check-icon">✓</span> Optimización de perfiles/bio</div>
+          <div class="check-item"><span class="check-icon">✓</span> Optimización perfiles/bio</div>
           <div class="check-item"><span class="check-icon">✓</span> WhatsApp Business & bienvenida</div>
           <div class="check-item"><span class="check-icon">✓</span> LinkTree profesional</div>
           <div class="check-item"><span class="check-icon">✓</span> Organización de accesos</div>
         </div>
-      </div>
-
-      <!-- 3 Fases Mensuales -->
-      <div>
-        <div style="margin-bottom: 6px;">
-          <span class="badge">Ecosistema Digital — Acompañamiento Mensual</span>
-          <h2 style="font-size: 13px; margin-top: 2px;">Tres alternativas mensuales (Se elige una sola · Permanencia 6 meses)</h2>
-        </div>
-
-        <div class="grid-3">
-          <!-- Fase 1 -->
-          <div class="bento">
-            <span class="badge">Fase 1</span>
-            <h3 style="margin-top: 2px;">Posicionamiento y Contenido</h3>
-            <p style="font-size: 8.5px; color: #64748b; margin-bottom: 6px;">Consistencia editorial y presencia de marca.</p>
-            <div class="price-tag" style="font-size: 14px;">$2.400.000</div>
-            <div class="price-sub">+ IVA / mes</div>
-            <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
-              <div class="check-item"><span class="check-icon">✓</span> 3–4 piezas principales / semana</div>
-              <div class="check-item"><span class="check-icon">✓</span> Hasta 4 reels/mes incluidos</div>
-              <div class="check-item"><span class="check-icon">✓</span> 4–6 historias/semana</div>
-              <div class="check-item"><span class="check-icon">✓</span> 1 jornada producción bimestral (6h)</div>
-              <div class="check-item"><span class="check-icon">✓</span> Meta Ads: 1 campaña activa</div>
-            </div>
-          </div>
-
-          <!-- Fase 2 -->
-          <div class="bento bento-spotlight">
-            <div style="display: flex; justify-content: space-between;">
-              <span class="badge badge-green">Fase 2</span>
-              <span class="badge badge-highlight" style="font-size: 7.5px;">★ RECOMENDADA</span>
-            </div>
-            <h3 style="margin-top: 2px;">Contenido + Crecimiento</h3>
-            <p style="font-size: 8.5px; color: #64748b; margin-bottom: 6px;">Mayor intensidad audiovisual y captación.</p>
-            <div class="price-tag" style="font-size: 14px;">$3.600.000</div>
-            <div class="price-sub">+ IVA / mes</div>
-            <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
-              <div class="check-item"><span class="check-icon">✓</span> 4–5 piezas principales / semana</div>
-              <div class="check-item"><span class="check-icon">✓</span> Hasta 8 reels/mes incluidos</div>
-              <div class="check-item"><span class="check-icon">✓</span> 1 jornada audiovisual MENSUAL (6h)</div>
-              <div class="check-item"><span class="check-icon">✓</span> Meta Ads: hasta 2 campañas activas</div>
-              <div class="check-item"><span class="check-icon">✓</span> Banco de contenidos exclusivo</div>
-            </div>
-          </div>
-
-          <!-- Fase 3 -->
-          <div class="bento">
-            <span class="badge">Fase 3</span>
-            <h3 style="margin-top: 2px;">Ecosistema Total + IA</h3>
-            <p style="font-size: 8.5px; color: #64748b; margin-bottom: 6px;">Todo el ecosistema integrado 360°.</p>
-            <div class="price-tag" style="font-size: 14px;">$4.400.000</div>
-            <div class="price-sub">+ IVA / mes</div>
-            <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
-              <div class="check-item"><span class="check-icon">✓</span> Todo lo incluido en Fase 2</div>
-              <div class="check-item"><span class="check-icon">✓</span> Gestión mensual de Google Ads</div>
-              <div class="check-item"><span class="check-icon">✓</span> Mantenimiento web mensual</div>
-              <div class="check-item"><span class="check-icon">✓</span> Optimización de conversión (CRO)</div>
-              <div class="check-item"><span class="check-icon">✓</span> Integraciones de IA técnica</div>
-            </div>
-          </div>
+        <div class="note-box" style="margin-top: 8px; padding: 5px 9px; font-size: 8.5px;">
+          <strong>Regla:</strong> La Etapa Inicial es el punto de partida técnico y obligatorio para activar Fase 1, 2 o 3. No constituye una fase mensual independiente.
         </div>
       </div>
+    </div>
 
-      <!-- Matriz Comparativa Resumida -->
-      <div class="bento" style="padding: 10px;">
-        <h3 style="font-size: 10.5px; margin-bottom: 6px;">Matriz Comparativa de Fases</h3>
+    <div class="doc-footer">
+      <div>Finanzas Consulting × Punto D' Partida</div>
+      <div>Página 1 de 4</div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PÁGINA 2: ECOSISTEMA DIGITAL (FASES & COMPARATIVA)
+       ========================================== -->
+  <div class="page">
+    <div class="doc-header">
+      <div class="brand">PUNTO D' PARTIDA <span>×</span> FINANZAS CONSULTING</div>
+      <div class="tag">ECOSISTEMA DIGITAL · FASES MENSUALES & MATRIZ</div>
+    </div>
+
+    <div class="page-content" style="gap: 13px;">
+      <!-- 3 Fases Mensuales Header -->
+      <div class="bento" style="padding: 13px 16px;">
+        <span class="badge">Ecosistema Digital — Acompañamiento Mensual</span>
+        <h2 style="font-size: 14.5px; margin-top: 3px;">Tres alternativas mensuales (Se elige una sola opción · Permanencia 6 meses)</h2>
+        <p style="font-size: 9.5px; margin-top: 3px; color: #475569;">
+          Diseñadas para escalar la presencia de Finanzas Consulting según la intensidad comercial, frecuencia de publicación y alcance de pauta deseado.
+        </p>
+      </div>
+
+      <!-- Grid de Fases -->
+      <div class="grid-3">
+        <!-- Fase 1 -->
+        <div class="bento" style="padding: 13px 13px;">
+          <span class="badge">Fase 1</span>
+          <h3 style="margin-top: 4px; font-size: 12px;">Posicionamiento y Contenido</h3>
+          <p style="font-size: 8.5px; color: #64748b; margin-top: 3px; margin-bottom: 7px;">Consistencia editorial y presencia de marca constante.</p>
+          <div class="price-tag" style="font-size: 15px;">$2.400.000</div>
+          <div class="price-sub">+ IVA / mes</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 4px; font-size: 8.5px;">
+            <div class="check-item"><span class="check-icon">✓</span> 3–4 piezas principales / semana</div>
+            <div class="check-item"><span class="check-icon">✓</span> Hasta 4 reels/mes incluidos</div>
+            <div class="check-item"><span class="check-icon">✓</span> 4–6 historias/semana</div>
+            <div class="check-item"><span class="check-icon">✓</span> 1 jornada producción bimestral (6h)</div>
+            <div class="check-item"><span class="check-icon">✓</span> Meta Ads: 1 campaña activa</div>
+            <div class="check-item"><span class="check-icon">✓</span> Reporte mensual de métricas</div>
+          </div>
+        </div>
+
+        <!-- Fase 2 -->
+        <div class="bento bento-spotlight" style="padding: 13px 13px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span class="badge badge-green">Fase 2</span>
+            <span class="badge badge-highlight" style="font-size: 7.5px;">★ RECOMENDADA</span>
+          </div>
+          <h3 style="margin-top: 4px; font-size: 12px;">Contenido + Crecimiento</h3>
+          <p style="font-size: 8.5px; color: #64748b; margin-top: 3px; margin-bottom: 7px;">Mayor intensidad audiovisual y captación de prospectos.</p>
+          <div class="price-tag" style="font-size: 15px;">$3.600.000</div>
+          <div class="price-sub">+ IVA / mes</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 4px; font-size: 8.5px;">
+            <div class="check-item"><span class="check-icon">✓</span> 4–5 piezas principales / semana</div>
+            <div class="check-item"><span class="check-icon">✓</span> Hasta 8 reels/mes incluidos</div>
+            <div class="check-item"><span class="check-icon">✓</span> 1 jornada audiovisual MENSUAL (6h)</div>
+            <div class="check-item"><span class="check-icon">✓</span> Meta Ads: hasta 2 campañas activas</div>
+            <div class="check-item"><span class="check-icon">✓</span> Banco de contenidos exclusivo</div>
+            <div class="check-item"><span class="check-icon">✓</span> Optimización continua de conversión</div>
+          </div>
+        </div>
+
+        <!-- Fase 3 -->
+        <div class="bento" style="padding: 13px 13px;">
+          <span class="badge">Fase 3</span>
+          <h3 style="margin-top: 4px; font-size: 12px;">Ecosistema Total + IA</h3>
+          <p style="font-size: 8.5px; color: #64748b; margin-top: 3px; margin-bottom: 7px;">Presencia omnicanal 360° con tecnología avanzada.</p>
+          <div class="price-tag" style="font-size: 15px;">$4.400.000</div>
+          <div class="price-sub">+ IVA / mes</div>
+          <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 4px; font-size: 8.5px;">
+            <div class="check-item"><span class="check-icon">✓</span> Todo lo incluido en Fase 2</div>
+            <div class="check-item"><span class="check-icon">✓</span> Gestión mensual de Google Ads</div>
+            <div class="check-item"><span class="check-icon">✓</span> Mantenimiento web mensual</div>
+            <div class="check-item"><span class="check-icon">✓</span> Optimización de conversión (CRO)</div>
+            <div class="check-item"><span class="check-icon">✓</span> Integraciones técnicas de IA</div>
+            <div class="check-item"><span class="check-icon">✓</span> Soporte prioritario permanente</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matriz Comparativa Detallada -->
+      <div class="bento" style="padding: 12px 15px;">
+        <h3 style="font-size: 12px; margin-bottom: 7px;">Matriz Comparativa de Fases Mensuales</h3>
         <table>
           <thead>
             <tr>
@@ -461,7 +482,13 @@
               <td style="text-align: center;">Hasta 8 reels</td>
             </tr>
             <tr>
-              <td>Jornada audiovisual Medellín/AM (6h máx)</td>
+              <td>Historias semanales de interacción</td>
+              <td style="text-align: center;">4–6 / sem</td>
+              <td style="text-align: center; font-weight: 700; color: #166534;">6–8 / sem</td>
+              <td style="text-align: center;">8–10 / sem</td>
+            </tr>
+            <tr>
+              <td>Jornada audiovisual en Medellín/AM (6h máx)</td>
               <td style="text-align: center;">1 cada 2 meses</td>
               <td style="text-align: center; font-weight: 700; color: #166534;">1 MENSUAL</td>
               <td style="text-align: center;">1 MENSUAL</td>
@@ -484,34 +511,44 @@
               <td style="text-align: center; color: #94a3b8;">—</td>
               <td style="text-align: center; font-weight: 700; color: #166534;">Incluido</td>
             </tr>
+            <tr>
+              <td>Reporte de métricas y reunión de seguimiento</td>
+              <td style="text-align: center;">Mensual</td>
+              <td style="text-align: center; font-weight: 700; color: #166534;">Quincenal / Mensual</td>
+              <td style="text-align: center;">Semanal / Mensual</td>
+            </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="note-box" style="padding: 8px 12px;">
+        <strong>Condiciones clave de las Fases:</strong> Las Fases 1, 2 y 3 no se suman entre sí; se elige una sola alternativa mensual según la velocidad y volumen deseado. El período mínimo de permanencia es de 6 meses para consolidar el posicionamiento y la maduración del algoritmo publicitario.
       </div>
     </div>
 
     <div class="doc-footer">
       <div>Finanzas Consulting × Punto D' Partida</div>
-      <div>Página 2 de 5</div>
+      <div>Página 2 de 4</div>
     </div>
   </div>
 
   <!-- ==========================================
-       PÁGINA 3: PYMES FINANCIABLES & SERVICIOS COMPLEMENTARIOS
+       PÁGINA 3: PYMES, SERVICIOS COMPLEMENTARIOS & INVERSIÓN
        ========================================== -->
   <div class="page">
     <div class="doc-header">
       <div class="brand">PUNTO D' PARTIDA <span>×</span> FINANZAS CONSULTING</div>
-      <div class="tag">CAMPAÑA PYMES & SERVICIOS COMPLEMENTARIOS</div>
+      <div class="tag">CAMPAÑA PYMES, SERVICIOS COMPLEMENTARIOS & INVERSIÓN</div>
     </div>
 
-    <div class="page-content" style="gap: 12px;">
+    <div class="page-content" style="gap: 13px;">
       <!-- Campaña Pymes Financiables -->
-      <div class="bento bento-spotlight" style="padding: 12px 14px;">
+      <div class="bento bento-spotlight" style="padding: 13px 16px;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
           <div>
             <span class="badge badge-green">CAMPAÑA INDEPENDIENTE</span>
-            <h2 style="font-size: 14px; margin-top: 2px;">Campaña Pymes Financiables</h2>
-            <p style="font-size: 9px; color: #64748b;">Producción, publicación y promoción en Facebook e Instagram mediante Meta Ads.</p>
+            <h2 style="font-size: 14.5px; margin-top: 3px;">Campaña Pymes Financiables</h2>
+            <p style="font-size: 9px; color: #64748b; margin-top: 2px;">Producción, publicación y promoción en Facebook e Instagram mediante Meta Ads.</p>
           </div>
           <div style="text-align: right;">
             <div class="price-tag">$3.800.000</div>
@@ -520,7 +557,7 @@
         </div>
 
         <div class="grid-2" style="margin-top: 8px;">
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px;">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 9px 11px;">
             <div style="font-size: 9px; font-weight: 700; color: #166534; font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;">QUÉ INCLUYE:</div>
             <div style="display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
               <div class="check-item"><span class="check-icon">✓</span> 1 jornada audiovisual en Medellín/AM (máx 6h)</div>
@@ -535,7 +572,7 @@
             </div>
           </div>
 
-          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px;">
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 9px 11px;">
             <div style="font-size: 9px; font-weight: 700; color: #64748b; font-family: 'JetBrains Mono', monospace; margin-bottom: 4px;">NO INCLUYE:</div>
             <div style="display: flex; flex-direction: column; gap: 4px; font-size: 8.5px; color: #64748b;">
               <div class="check-item"><span class="cross-icon">✕</span> Inversión publicitaria (asumida por cliente)</div>
@@ -549,28 +586,28 @@
         </div>
       </div>
 
-      <!-- Servicios Complementarios (Antes de la Inversión) -->
+      <!-- Servicios Complementarios (Inmediatamente ANTES de la Inversión) -->
       <div>
         <div style="margin-bottom: 6px;">
           <span class="badge">Módulos Especializados</span>
-          <h2 style="font-size: 13px; margin-top: 2px;">Servicios complementarios e independientes</h2>
-          <p style="font-size: 9px; color: #64748b;">No constituyen una cuarta fase. Pueden contratarse junto con Fase 3 o de manera independiente.</p>
+          <h2 style="font-size: 13.5px; margin-top: 2px;">Servicios complementarios e independientes</h2>
+          <p style="font-size: 9px; color: #64748b;">Pueden contratarse de manera independiente o junto con el acompañamiento mensual.</p>
         </div>
 
         <div class="grid-2">
           <!-- Google Ads -->
-          <div class="bento">
+          <div class="bento" style="padding: 11px 13px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
               <div>
                 <span class="badge">Google Ads</span>
-                <h3 style="font-size: 11.5px; margin-top: 2px;">Implementación Google Ads</h3>
+                <h3 style="font-size: 12px; margin-top: 2px;">Implementación Google Ads</h3>
               </div>
               <div style="text-align: right;">
-                <div class="price-tag" style="font-size: 13px;">$2.800.000</div>
+                <div class="price-tag" style="font-size: 14px;">$2.800.000</div>
                 <div class="price-sub">+ IVA · Pago único</div>
               </div>
             </div>
-            <p style="font-size: 8.5px; color: #64748b; margin-top: 4px; margin-bottom: 6px;">
+            <p style="font-size: 8.5px; color: #64748b; margin-top: 4px; margin-bottom: 5px;">
               Configuración técnica y profesional para posicionar los servicios en Google Search y Red de Display.
             </p>
             <div style="display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
@@ -583,18 +620,18 @@
           </div>
 
           <!-- Web + IA -->
-          <div class="bento">
+          <div class="bento" style="padding: 11px 13px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
               <div>
                 <span class="badge">Web & Tecnología</span>
-                <h3 style="font-size: 11.5px; margin-top: 2px;">Web + IA — Rediseño / Desarrollo</h3>
+                <h3 style="font-size: 12px; margin-top: 2px;">Web + IA — Rediseño / Desarrollo</h3>
               </div>
               <div style="text-align: right;">
-                <div class="price-tag" style="font-size: 13px;">$2.200.000</div>
+                <div class="price-tag" style="font-size: 14px;">$2.200.000</div>
                 <div class="price-sub">+ IVA · Pago único</div>
               </div>
             </div>
-            <p style="font-size: 8.5px; color: #64748b; margin-top: 4px; margin-bottom: 6px;">
+            <p style="font-size: 8.5px; color: #64748b; margin-top: 4px; margin-bottom: 5px;">
               Sitio web moderno, responsive y enfocado en conversión comercial de prospectos calificados.
             </p>
             <div style="display: flex; flex-direction: column; gap: 3px; font-size: 8.5px;">
@@ -607,47 +644,30 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="doc-footer">
-      <div>Finanzas Consulting × Punto D' Partida</div>
-      <div>Página 3 de 5</div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       PÁGINA 4: INVERSIÓN & EQUIPO MULTIDISCIPLINARIO
-       ========================================== -->
-  <div class="page">
-    <div class="doc-header">
-      <div class="brand">PUNTO D' PARTIDA <span>×</span> FINANZAS CONSULTING</div>
-      <div class="tag">RESUMEN OFICIAL DE INVERSIÓN & EQUIPO</div>
-    </div>
-
-    <div class="page-content" style="gap: 12px;">
-      <!-- Resumen Oficial de Inversión -->
-      <div class="bento">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      <!-- Resumen Oficial de Inversión (Después de Servicios Complementarios) -->
+      <div class="bento" style="padding: 11px 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
           <div>
             <span class="badge badge-green">Valores Oficiales</span>
-            <h2 style="font-size: 14px; margin-top: 2px;">Resumen Oficial de Inversión</h2>
+            <h2 style="font-size: 13.5px; margin-top: 2px;">Resumen Oficial de Inversión</h2>
           </div>
-          <span style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #64748b;">Valores en COP + IVA</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 8.5px; color: #64748b;">Valores en COP + IVA</span>
         </div>
 
         <table>
           <thead>
             <tr>
-              <th style="width: 32%;">Concepto</th>
+              <th style="width: 35%;">Concepto</th>
               <th style="width: 25%;">Modalidad</th>
-              <th style="width: 23%; text-align: right;">Valor</th>
-              <th style="width: 20%; text-align: center;">Condición</th>
+              <th style="width: 22%; text-align: right;">Valor</th>
+              <th style="width: 18%; text-align: center;">Condición</th>
             </tr>
           </thead>
           <tbody>
             <tr style="background: #f8fafc; font-weight: 600;">
               <td>Etapa Inicial (Construcción Estratégica)</td>
-              <td>Pago único</td>
+              <td>Pago único (15–20 días)</td>
               <td style="text-align: right; font-family: 'JetBrains Mono'; font-weight: 800;">$1.700.000</td>
               <td style="text-align: center; color: #166534; font-size: 8.5px;">Obligatoria Fases</td>
             </tr>
@@ -691,91 +711,92 @@
         </table>
 
         <div class="note-box" style="margin-top: 8px;">
-          <strong>Presupuesto de pauta:</strong> La inversión publicitaria en Meta Ads y Google Ads no está incluida en los honorarios de PD'P; es asumida directamente por Finanzas Consulting. Las Fases 1, 2 y 3 no se suman entre sí.
-        </div>
-      </div>
-
-      <!-- Ecosistema de Trabajo y Recomendación PD'P -->
-      <div class="grid-2">
-        <div class="bento bento-spotlight" style="padding: 10px;">
-          <span class="badge badge-green">Recomendación Estratégica PD'P</span>
-          <h3 style="margin-top: 2px; font-size: 11px;">¿Iniciando con Pymes Financiables?</h3>
-          <p style="font-size: 8.5px; margin-top: 3px;">
-            Si la campaña representa la puerta de entrada a una relación de largo plazo, recomendamos sumar la <strong>Etapa Inicial ($1.700.000 + IVA)</strong>. Permite estructurar la base, WhatsApp, Linktree y perfiles antes de pautar.
-          </p>
-          <div style="margin-top: 6px; font-weight: 800; font-family: 'JetBrains Mono'; font-size: 11px; color: #166534;">
-            Combo: $3.8M + $1.7M = $5.500.000 + IVA
-          </div>
-        </div>
-
-        <div class="bento" style="padding: 10px;">
-          <span class="badge">Coordinación Unificada</span>
-          <h3 style="margin-top: 2px; font-size: 11px;">No contrata una persona. Suma un equipo.</h3>
-          <p style="font-size: 8.5px; margin-top: 3px;">
-            Finanzas Consulting cuenta con un interlocutor central de proyecto y un equipo completo detrás que respalda cada área de su presencia digital.
-          </p>
-        </div>
-      </div>
-
-      <!-- 7 Perfiles Multidisciplinarios -->
-      <div class="bento" style="padding: 10px;">
-        <h3 style="font-size: 11px; margin-bottom: 6px;">7 Roles Especializados Integrados</h3>
-        <div class="grid-4" style="font-size: 8.5px;">
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">1. Dirección Estratégica</div>
-            <div style="color: #64748b; font-size: 8px;">Ruta de conversión y negocio</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">2. Diseño & Visual</div>
-            <div style="color: #64748b; font-size: 8px;">Identidad y piezas gráficas</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">3. Audiovisual</div>
-            <div style="color: #64748b; font-size: 8px;">Jornadas rodaje 6h y reels</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">4. Contenidos / Copy</div>
-            <div style="color: #64748b; font-size: 8px;">Editorial y publicaciones</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">5. Publicidad (Ads)</div>
-            <div style="color: #64748b; font-size: 8px;">Meta Ads y Google Ads</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-weight: 700; color: #0f172a;">6. Web & IA</div>
-            <div style="color: #64748b; font-size: 8px;">UX/UI, CRO y automatización</div>
-          </div>
-          <div style="padding: 4px 6px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; grid-column: span 2;">
-            <div style="font-weight: 700; color: #0f172a;">7. Coordinación de Proyecto</div>
-            <div style="color: #64748b; font-size: 8px;">Punto único de contacto, seguimiento de cronograma y entregables</div>
-          </div>
+          <strong>Presupuesto publicitario:</strong> La inversión en pauta de Meta Ads y Google Ads no está incluida en los honorarios de PD'P; es pagada directamente por Finanzas Consulting en sus cuentas comerciales oficiales.
         </div>
       </div>
     </div>
 
     <div class="doc-footer">
       <div>Finanzas Consulting × Punto D' Partida</div>
-      <div>Página 4 de 5</div>
+      <div>Página 3 de 4</div>
     </div>
   </div>
 
   <!-- ==========================================
-       PÁGINA 5: REQUERIMIENTOS, CONDICIONES & CIERRE
+       PÁGINA 4: EQUIPO, REQUERIMIENTOS, CONDICIONES & CIERRE
        ========================================== -->
   <div class="page">
     <div class="doc-header">
       <div class="brand">PUNTO D' PARTIDA <span>×</span> FINANZAS CONSULTING</div>
-      <div class="tag">REQUERIMIENTOS, CONDICIONES & SIGUIENTE PASO</div>
+      <div class="tag">EQUIPO, REQUERIMIENTOS, CONDICIONES & CIERRE</div>
     </div>
 
     <div class="page-content" style="gap: 12px;">
-      <!-- Requerimientos -->
-      <div class="bento">
-        <span class="badge">Insumos de Arranque</span>
-        <h2 style="font-size: 13px; margin-top: 2px;">Requerimientos para dar inicio</h2>
-        <p style="font-size: 8.5px; color: #64748b; margin-bottom: 6px;">Facilitados por Finanzas Consulting durante la Etapa Inicial:</p>
+      <!-- Recomendación PD'P y Coordinación -->
+      <div class="grid-2">
+        <div class="bento bento-spotlight" style="padding: 12px 14px;">
+          <span class="badge badge-green">Recomendación Estratégica PD'P</span>
+          <h3 style="margin-top: 3px; font-size: 12px;">¿Iniciando con Pymes Financiables?</h3>
+          <p style="font-size: 8.5px; margin-top: 4px;">
+            Si la campaña representa el inicio de una relación estratégica de largo plazo, recomendamos sumar la <strong>Etapa Inicial ($1.700.000 + IVA)</strong> para estructurar perfiles, WhatsApp y Linktree antes de pautar.
+          </p>
+          <div style="margin-top: 7px; font-weight: 800; font-family: 'JetBrains Mono'; font-size: 11px; color: #166534;">
+            Combo: $3.8M + $1.7M = $5.500.000 + IVA
+          </div>
+        </div>
 
-        <div class="grid-4" style="font-size: 8px;">
+        <div class="bento" style="padding: 12px 14px;">
+          <span class="badge">Coordinación Unificada</span>
+          <h3 style="margin-top: 3px; font-size: 12px;">No contrata una persona. Suma un equipo.</h3>
+          <p style="font-size: 8.5px; margin-top: 4px;">
+            Finanzas Consulting cuenta con un interlocutor central de proyecto y un equipo multidisciplinario completo detrás que respalda cada área de su presencia digital.
+          </p>
+          <div style="margin-top: 7px; font-size: 8.5px; color: #64748b; font-weight: 600;">
+            Gestión ágil con entregables y cronograma semanal transparente.
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 Perfiles Multidisciplinarios -->
+      <div class="bento" style="padding: 11px 13px;">
+        <h3 style="font-size: 11.5px; margin-bottom: 6px;">7 Roles Especializados Integrados</h3>
+        <div class="grid-4" style="font-size: 8.5px; gap: 7px;">
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">1. Dirección Estratégica</div>
+            <div style="color: #64748b; font-size: 8px;">Ruta de conversión y negocio</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">2. Diseño & Visual</div>
+            <div style="color: #64748b; font-size: 8px;">Identidad y piezas gráficas</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">3. Audiovisual</div>
+            <div style="color: #64748b; font-size: 8px;">Jornadas rodaje 6h y reels</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">4. Contenidos / Copy</div>
+            <div style="color: #64748b; font-size: 8px;">Editorial y publicaciones</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">5. Publicidad (Ads)</div>
+            <div style="color: #64748b; font-size: 8px;">Meta Ads y Google Ads</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-weight: 700; color: #0f172a;">6. Web & IA</div>
+            <div style="color: #64748b; font-size: 8px;">UX/UI, CRO y tecnología</div>
+          </div>
+          <div style="padding: 5px 7px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; grid-column: span 2;">
+            <div style="font-weight: 700; color: #0f172a;">7. Coordinación de Proyecto</div>
+            <div style="color: #64748b; font-size: 8px;">Punto único de contacto, seguimiento de cronograma y entregables</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requerimientos -->
+      <div class="bento" style="padding: 11px 13px;">
+        <span class="badge" style="margin-bottom: 4px;">Insumos de Arranque</span>
+        <h2 style="font-size: 12.5px; margin-top: 2px;">Requerimientos para dar inicio</h2>
+        <div class="grid-4" style="font-size: 8px; margin-top: 5px; gap: 6px;">
           <div class="check-item"><span class="check-icon">✓</span> 1. Accesos FB, IG, Meta Business</div>
           <div class="check-item"><span class="check-icon">✓</span> 2. Logo y manual de marca</div>
           <div class="check-item"><span class="check-icon">✓</span> 3. Fotos y videos existentes</div>
@@ -788,60 +809,61 @@
       </div>
 
       <!-- Condiciones Contractuales -->
-      <div class="bento">
-        <span class="badge">Marco de Trabajo</span>
-        <h2 style="font-size: 13px; margin-top: 2px;">Condiciones del servicio y alcance</h2>
-
-        <div class="grid-2" style="font-size: 8.5px; margin-top: 6px; gap: 8px;">
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <div><strong>• Etapa Inicial obligatoria:</strong> Obligatoria para contratar Fase 1, 2 o 3. Si se inicia en Fase 2 o 3, igualmente debe contratarse.</div>
-            <div><strong>• Fases no acumulativas:</strong> Se elige una sola alternativa de servicio mensual según la intensidad de trabajo deseada.</div>
-            <div><strong>• Permanencia mínima:</strong> Seis (6) meses de permanencia para el acompañamiento mensual. La Etapa Inicial no cuenta dentro del período.</div>
-            <div><strong>• Presupuesto publicitario:</strong> No incluido en los honorarios; asumido directamente por Finanzas Consulting.</div>
+      <div class="bento" style="padding: 11px 13px;">
+        <span class="badge" style="margin-bottom: 4px;">Marco de Trabajo</span>
+        <h2 style="font-size: 12.5px; margin-top: 2px;">Condiciones del servicio y alcance</h2>
+        <div class="grid-2" style="font-size: 8.5px; margin-top: 5px; gap: 8px;">
+          <div style="display: flex; flex-direction: column; gap: 3.5px;">
+            <div><strong>• Etapa Inicial obligatoria:</strong> Obligatoria para contratar Fase 1, 2 o 3.</div>
+            <div><strong>• Fases no acumulativas:</strong> Se elige una sola alternativa de servicio mensual.</div>
+            <div><strong>• Permanencia mínima:</strong> Seis (6) meses para acompañamiento mensual.</div>
+            <div><strong>• Pauta asumida por cliente:</strong> Inversión publicitaria no incluida en honorarios.</div>
           </div>
-
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <div><strong>• Jornadas de rodaje:</strong> Máximo 6 horas de duración, en Medellín o Área Metropolitana, con coordinación previa de agenda.</div>
-            <div><strong>• Entregables no acumulativos:</strong> Corresponden al período pactado; no se trasladan a meses posteriores.</div>
-            <div><strong>• Obligaciones de medio:</strong> No se garantizan ventas o leads comerciales específicos, sino la ejecución profesional de la estrategia.</div>
-            <div><strong>• Terceros y hosting:</strong> Dominios, hosting, licencias o consumo de APIs/IA no están incluidos salvo contratación expresa.</div>
+          <div style="display: flex; flex-direction: column; gap: 3.5px;">
+            <div><strong>• Jornadas de rodaje:</strong> Máx 6h en Medellín o AM con coordinación previa.</div>
+            <div><strong>• Entregables no acumulativos:</strong> Corresponden al período pactado.</div>
+            <div><strong>• Obligaciones de medio:</strong> Compromiso de ejecución técnica y profesional.</div>
+            <div><strong>• Hosting / Dominio:</strong> Servicios y suscripciones de terceros por cuenta del cliente.</div>
           </div>
         </div>
       </div>
 
       <!-- Siguiente Paso / Cierre -->
-      <div class="bento bento-spotlight" style="padding: 14px 16px;">
-        <span class="badge badge-green">Punto de Contacto</span>
-        <h2 style="font-size: 16px; margin-top: 3px;">Siguiente paso: Coordinemos el inicio</h2>
-        <p style="font-size: 9.5px; margin-top: 2px; margin-bottom: 10px;">
-          Definir la alternativa de acompañamiento mensual o la Campaña Pymes Financiables, validar servicios requeridos y agendar la sesión de arranque.
-        </p>
-
-        <div class="grid-4" style="font-size: 9px; margin-bottom: 10px;">
-          <div style="background: #ffffff; padding: 6px; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Sitio Web</div>
-            <div style="font-weight: 700;">pdpcomunica.com</div>
+      <div class="bento bento-spotlight" style="padding: 13px 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div>
+            <span class="badge badge-green">Punto de Contacto</span>
+            <h2 style="font-size: 14.5px; margin-top: 2px;">Siguiente paso: Coordinemos el inicio</h2>
+            <p style="font-size: 9px; margin-top: 2px;">
+              Definir la alternativa deseada, validar servicios requeridos y agendar la sesión de arranque.
+            </p>
           </div>
-          <div style="background: #ffffff; padding: 6px; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Correo Directo</div>
-            <div style="font-weight: 700;">ceo@pdpcomunica.com</div>
-          </div>
-          <div style="background: #ffffff; padding: 6px; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">WhatsApp / Tel</div>
-            <div style="font-weight: 700;">+57 305 233 9865</div>
-          </div>
-          <div style="background: #ffffff; padding: 6px; border-radius: 6px; border: 1px solid #e2e8f0;">
-            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Instagram</div>
-            <div style="font-weight: 700;">@pdpcomunica</div>
+          <div style="text-align: right;">
+            <div style="font-family: 'Plus Jakarta Sans'; font-size: 13px; font-weight: 800; color: #0f172a;">
+              PUNTO D' PARTIDA
+            </div>
+            <div style="font-family: 'JetBrains Mono'; font-size: 8.5px; font-weight: 700; color: #166534;">
+              Creer · Crear · Crecer
+            </div>
           </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #86efac; padding-top: 8px;">
-          <div style="font-family: 'Plus Jakarta Sans'; font-size: 11px; font-weight: 800; color: #0f172a;">
-            PUNTO D' PARTIDA
+        <div class="grid-4" style="font-size: 9px;">
+          <div style="background: #ffffff; padding: 6px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Sitio Web</div>
+            <div style="font-weight: 700; font-size: 9px;">pdpcomunica.com</div>
           </div>
-          <div style="font-family: 'JetBrains Mono'; font-size: 9px; font-weight: 700; color: #166534;">
-            Creer · Crear · Crecer
+          <div style="background: #ffffff; padding: 6px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Correo Directo</div>
+            <div style="font-weight: 700; font-size: 9px;">ceo@pdpcomunica.com</div>
+          </div>
+          <div style="background: #ffffff; padding: 6px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">WhatsApp / Tel</div>
+            <div style="font-weight: 700; font-size: 9px;">+57 305 233 9865</div>
+          </div>
+          <div style="background: #ffffff; padding: 6px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
+            <div style="font-size: 7.5px; color: #64748b; text-transform: uppercase;">Instagram</div>
+            <div style="font-weight: 700; font-size: 9px;">@pdpcomunica</div>
           </div>
         </div>
       </div>
@@ -849,7 +871,7 @@
 
     <div class="doc-footer">
       <div>Finanzas Consulting × Punto D' Partida</div>
-      <div>Página 5 de 5</div>
+      <div>Página 4 de 4</div>
     </div>
   </div>
 
