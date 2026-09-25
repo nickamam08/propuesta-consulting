@@ -35,15 +35,6 @@ export default function Navbar() {
     }
   };
 
-  const handleDownloadPDF = () => {
-    const originalTitle = document.title;
-    document.title = "Propuesta Comercial — Finanzas Consulting x Punto D' Partida";
-    window.print();
-    setTimeout(() => {
-      document.title = originalTitle;
-    }, 1000);
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
@@ -75,17 +66,19 @@ export default function Navbar() {
         {/* Right Action buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Botón Descargar PDF */}
-          <button
-            type="button"
-            onClick={handleDownloadPDF}
-            className="px-3 sm:px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
-            title="Descargar propuesta completa en PDF"
-            aria-label="Descargar propuesta completa en PDF"
+          <a
+            href="/Propuesta_Comercial_Finanzas_Consulting_PDP.pdf"
+            download="Propuesta_Comercial_Finanzas_Consulting_PDP.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 sm:px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer no-underline"
+            title="Descargar propuesta comercial oficial en PDF (5 páginas)"
+            aria-label="Descargar propuesta comercial oficial en PDF"
           >
             <Download size={13} className="text-[#1ED760]" />
             <span className="hidden sm:inline">Descargar PDF</span>
             <span className="sm:hidden">PDF</span>
-          </button>
+          </a>
 
           {/* Light / Dark Mode Toggle */}
           <button
