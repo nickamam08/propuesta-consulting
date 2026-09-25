@@ -59,14 +59,14 @@ export default function InvestmentSummary() {
                 {recurring.map((item) => (
                   <div
                     key={item.label}
-                    className={`p-3.5 rounded-xl border transition-all flex items-center justify-between gap-3 ${
+                    className={`p-3 sm:p-3.5 rounded-xl border transition-all flex items-center justify-between gap-2.5 sm:gap-3 ${
                       item.recommended
                         ? 'bg-[#1DB954]/10 border-[#1DB954]/40 shadow-[0_0_20px_rgba(29,185,84,0.15)]'
                         : 'bg-white/[0.02] border-white/[0.05]'
                     }`}
                   >
-                    <div>
-                      <div className="flex items-center gap-2">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                         <span className="text-xs font-bold text-white">{item.label}</span>
                         {item.recommended && (
                           <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#1DB954] text-black font-mono font-extrabold uppercase">
@@ -74,14 +74,14 @@ export default function InvestmentSummary() {
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] font-mono text-gray-400 mt-0.5 block">
+                      <span className="text-[10px] sm:text-[11px] font-mono text-gray-400 mt-0.5 block truncate">
                         {item.note}
                       </span>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <span className="font-mono text-base sm:text-lg font-bold text-white">{item.price}</span>
-                      <span className="block font-mono text-[10px] text-gray-400">{item.suffix}</span>
+                      <span className="font-mono text-sm sm:text-base lg:text-lg font-bold text-white">{item.price}</span>
+                      <span className="block font-mono text-[9px] sm:text-[10px] text-gray-400">{item.suffix}</span>
                     </div>
                   </div>
                 ))}
@@ -110,18 +110,18 @@ export default function InvestmentSummary() {
                 {oneOff.map((item) => (
                   <div
                     key={item.label}
-                    className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between gap-3"
+                    className="p-3 sm:p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-between gap-2.5 sm:gap-3"
                   >
-                    <div>
-                      <div className="text-xs font-bold text-white">{item.label}</div>
-                      <span className="text-[11px] font-mono text-gray-400 mt-0.5 block">
+                    <div className="min-w-0 flex-1">
+                      <div className="text-xs font-bold text-white truncate">{item.label}</div>
+                      <span className="text-[10px] sm:text-[11px] font-mono text-gray-400 mt-0.5 block truncate">
                         {item.note}
                       </span>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <span className="font-mono text-base sm:text-lg font-bold text-white">{item.price}</span>
-                      <span className="block font-mono text-[10px] text-gray-400">{item.suffix}</span>
+                      <span className="font-mono text-sm sm:text-base lg:text-lg font-bold text-white">{item.price}</span>
+                      <span className="block font-mono text-[9px] sm:text-[10px] text-gray-400">{item.suffix}</span>
                     </div>
                   </div>
                 ))}

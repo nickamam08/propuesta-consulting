@@ -79,18 +79,18 @@ export default function Hero() {
                 {STRATEGY_STEPS.map((s) => (
                   <div
                     key={s.step}
-                    className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-[#1DB954]/40 transition-all flex flex-col justify-between group"
+                    className="p-2 sm:p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-[#1DB954]/40 transition-all flex flex-col justify-between group min-w-0"
                   >
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-[10px] font-mono font-bold text-[#1ED760]">
                         {s.step}
                       </span>
-                      <ArrowRight size={10} className="text-gray-500 group-hover:text-[#1ED760] transition-colors" />
+                      <ArrowRight size={10} className="text-gray-500 group-hover:text-[#1ED760] transition-colors shrink-0" />
                     </div>
-                    <span className="text-xs font-bold text-white tracking-wide">
+                    <span className="text-[11px] sm:text-xs font-bold text-white tracking-wide truncate">
                       {s.title}
                     </span>
-                    <span className="text-[10px] text-gray-400 leading-tight mt-0.5">
+                    <span className="text-[10px] text-gray-400 leading-tight mt-0.5 line-clamp-2">
                       {s.desc}
                     </span>
                   </div>

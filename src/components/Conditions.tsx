@@ -99,9 +99,7 @@ export default function Conditions() {
                     className="w-full px-5 py-4 text-left flex items-center justify-between gap-4 hover:bg-white/[0.02] cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono font-bold text-[#1ED760]">
-                        0{item.id}
-                      </span>
+                      <span className="w-2 h-2 rounded-full bg-[#1ED760] shrink-0" />
                       <span className="text-xs sm:text-sm font-bold text-white">
                         {item.title}
                       </span>

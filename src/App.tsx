@@ -127,13 +127,13 @@ export default function App() {
       <div className="mobile-cta-rail-bento no-print" aria-label="Acciones rápidas móviles">
         <a
           href="#comparar"
-          className="bg-white/[0.06] border border-white/[0.1] text-white flex items-center justify-center"
+          className="bg-white/[0.06] border border-white/[0.1] text-white flex items-center justify-center text-xs sm:text-sm py-2.5 px-3 rounded-full truncate"
         >
           Comparar Fases
         </a>
         <a
           href="#contacto"
-          className="btn-spotify justify-center"
+          className="btn-spotify justify-center text-xs sm:text-sm py-2.5 px-3 rounded-full truncate"
         >
           Hablar con el equipo
         </a>

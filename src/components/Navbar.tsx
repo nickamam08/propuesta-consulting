@@ -71,20 +71,20 @@ export default function Navbar() {
             download="Propuesta_Comercial_Finanzas_Consulting_PDP.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 sm:px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer no-underline"
-            title="Descargar propuesta comercial oficial en PDF (5 páginas)"
+            className="px-2.5 sm:px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer no-underline shrink-0"
+            title="Descargar propuesta comercial oficial en PDF (4 páginas)"
             aria-label="Descargar propuesta comercial oficial en PDF"
           >
             <Download size={13} className="text-[#1ED760]" />
             <span className="hidden sm:inline">Descargar PDF</span>
-            <span className="sm:hidden">PDF</span>
+            <span className="sm:hidden text-[11px] font-mono">PDF</span>
           </a>
 
           {/* Light / Dark Mode Toggle */}
           <button
             type="button"
             onClick={toggleTheme}
-            className="p-2 sm:px-3 sm:py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
+            className="p-2 sm:px-3 sm:py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.08] hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
             aria-label={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
             title={theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
           >
@@ -104,7 +104,7 @@ export default function Navbar() {
           {/* Quick Calculator Shortcut */}
           <a
             href="#inversion"
-            className="hidden md:flex px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all items-center gap-1.5"
+            className="hidden md:flex px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all items-center gap-1.5 shrink-0"
           >
             <Calculator size={13} className="text-[#1ED760]" />
             <span>Simulador</span>
@@ -115,11 +115,12 @@ export default function Navbar() {
             href={WHATSAPP_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-spotify py-2 px-3.5 sm:px-4 text-xs font-bold"
+            className="btn-spotify py-2 px-3 sm:px-4 text-xs font-bold shrink-0"
+            aria-label="Contactar por WhatsApp"
           >
-            <span className="hidden xs:inline">Hablemos</span>
-            <MessageCircle size={14} className="xs:hidden" />
-            <ArrowRight size={13} className="hidden xs:inline" />
+            <span className="hidden sm:inline">Hablemos</span>
+            <MessageCircle size={14} className="sm:hidden" />
+            <ArrowRight size={13} className="hidden sm:inline" />
           </a>
         </div>
       </div>

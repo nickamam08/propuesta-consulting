@@ -59,7 +59,7 @@ export default function PymesFinanciables() {
             </div>
 
             {/* Price Box */}
-            <div className="p-5 rounded-2xl bg-[#090a0f]/80 border border-[#1DB954]/30 min-w-[260px] shadow-[0_0_30px_rgba(29,185,84,0.12)]">
+            <div className="p-5 rounded-2xl bg-[#090a0f]/80 border border-[#1DB954]/30 w-full lg:w-auto lg:min-w-[260px] shadow-[0_0_30px_rgba(29,185,84,0.12)]">
               <span className="text-[11px] font-mono text-gray-400 uppercase tracking-wider">Inversión de Campaña</span>
               <div className="flex items-baseline gap-2 mt-0.5">
                 <span className="text-3xl sm:text-4xl font-extrabold font-mono text-white">

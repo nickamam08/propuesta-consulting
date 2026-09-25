@@ -42,7 +42,7 @@ export default function ContactForm() {
   };
 
   const inputClass =
-    'w-full px-4 py-3 rounded-xl bg-[#090a0f]/80 border border-white/[0.08] text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#1DB954] focus:ring-1 focus:ring-[#1DB954] transition-all font-sans';
+    'w-full px-4 py-3 rounded-xl bg-[#090a0f]/80 border border-white/[0.08] text-base sm:text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-[#1DB954] focus:ring-1 focus:ring-[#1DB954] transition-all font-sans';
 
   const contactItems = [
     { Icon: Globe2, label: 'Sitio web', value: 'pdpcomunica.com' },
@@ -59,7 +59,7 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
           
           {/* Left Column: 10. Siguiente Paso info (Cols 5) */}
-          <div className="lg:col-span-5 bento-card p-6 sm:p-8 flex flex-col justify-between border-white/[0.09]">
+          <div className="lg:col-span-5 bento-card p-5 sm:p-8 flex flex-col justify-between border-white/[0.09]">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
                 <Compass size={14} />
@@ -89,15 +89,15 @@ export default function ContactForm() {
               </div>
 
               {/* Contact mini-bento grid */}
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                 {contactItems.map(({ Icon, label, value }) => (
-                  <div key={label} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-2.5">
+                  <div key={label} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-2.5 min-w-0">
                     <div className="w-7 h-7 rounded-lg bg-[#1DB954]/10 border border-[#1DB954]/25 flex items-center justify-center text-[#1ED760] shrink-0 mt-0.5">
                       <Icon size={13} />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <span className="text-[10px] font-mono text-gray-400 block">{label}</span>
-                      <span className="text-xs font-bold text-white">{value}</span>
+                      <span className="text-xs font-bold text-white block truncate">{value}</span>
                     </div>
                   </div>
                 ))}

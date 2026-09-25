@@ -47,10 +47,12 @@ export default function ClientRequirements() {
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="w-6 h-6 rounded-lg bg-[#1DB954]/15 text-[#1ED760] font-mono text-xs font-bold flex items-center justify-center">
-                    0{idx + 1}
+                  <span className="w-6 h-6 rounded-lg bg-[#1DB954]/15 text-[#1ED760] flex items-center justify-center">
+                    <CheckCircle2 size={14} />
                   </span>
-                  <CheckCircle2 size={14} className="text-[#1ED760]" />
+                  <span className="text-[10px] font-mono text-gray-500 uppercase">
+                    Insumo
+                  </span>
                 </div>
                 <p className="text-xs text-gray-200 leading-relaxed">
                   {req}

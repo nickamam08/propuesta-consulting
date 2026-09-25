@@ -14,6 +14,12 @@ export default function PhaseComparator() {
   const [viewMode, setViewMode] = useState<'matrix' | 'tabs'>('matrix');
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      setViewMode('tabs');
+    }
+  }, []);
+
+  useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -171,19 +177,19 @@ export default function PhaseComparator() {
         ) : (
           /* View Mode: Tabs */
           <div className="mt-6">
-            <div className="grid grid-cols-3 gap-2 p-1.5 rounded-2xl bg-[#090a0f]/80 border border-white/[0.08] mb-6">
+            <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-1 sm:p-1.5 rounded-2xl bg-[#090a0f]/80 border border-white/[0.08] mb-6">
               {PHASES.map((p, idx) => (
                 <button
                   key={p.id}
                   onClick={() => setActiveTab(idx)}
-                  className={`py-3 px-3 rounded-xl text-center transition-all ${
+                  className={`py-2 px-1.5 sm:py-3 sm:px-3 rounded-xl text-center transition-all ${
                     activeTab === idx
                       ? 'bg-[#1DB954] text-black font-bold shadow-lg'
                       : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
                   }`}
                 >
-                  <div className="text-xs">{p.tag}</div>
-                  <div className="text-[11px] font-mono mt-0.5 opacity-90">{p.price}/mes</div>
+                  <div className="text-[11px] sm:text-xs font-bold leading-tight">{p.tag}</div>
+                  <div className="text-[9px] sm:text-[11px] font-mono mt-0.5 opacity-90 truncate">{p.price}/m</div>
                 </button>
               ))}
             </div>
