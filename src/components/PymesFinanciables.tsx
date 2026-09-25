@@ -75,7 +75,41 @@ export default function PymesFinanciables() {
             </div>
           </div>
 
-          {/* Deliverables Bento Grid */}
+            {/* Visual Mockup of Pymes Campaign */}
+            <div className="mb-8 rounded-2xl overflow-hidden border border-white/[0.09] bg-[#090a0f]/60">
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900 group">
+                <img
+                  src="/images/referente-campana-pymes.jpg"
+                  alt="Referente de Campaña Publicitaria Pymes Financiables en Meta Ads"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                  loading="lazy"
+                />
+                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-mono text-[#1ED760] font-bold border border-[#1DB954]/40">
+                    Meta Ads · Facebook & Instagram Ads
+                  </span>
+                  <span className="px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[11px] font-mono text-white font-medium border border-white/20">
+                    Captación directa a WhatsApp
+                  </span>
+                </div>
+              </div>
+              <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white/[0.02]">
+                <div>
+                  <h4 className="text-sm sm:text-base font-bold text-white">
+                    Anuncios diseñados para el empresario que busca financiamiento y liquidez
+                  </h4>
+                  <p className="text-xs text-gray-400 mt-0.5">
+                    Piezas gráficas persuasivas y reels de llamado a la acción con segmentación B2B para dueños de negocio en Colombia.
+                  </p>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] shrink-0">
+                  <span className="w-2 h-2 rounded-full bg-[#1ED760] animate-pulse" />
+                  <span>Embudo de Captación Activo</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Deliverables Bento Grid */}
           <div className="mt-8">
             <div className="text-xs font-mono font-bold uppercase text-white tracking-wider mb-4 flex items-center gap-2">
               <Sparkles size={14} className="text-[#1ED760]" />

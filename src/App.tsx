@@ -77,17 +77,19 @@ export default function App() {
         <ProposalOverview />
         
         <Suspense fallback={<LazyFallback />}>
-          {/* Ecosistema Digital */}
+          {/* Ecosistema Digital (Propuesta 1) */}
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <ProjectStart />
           </div>
           <Phases />
+
+          {/* Campaña Pymes Financiables (Propuesta 2) */}
+          <PymesFinanciables />
+
+          {/* Matriz Comparativa (ubicada debajo de las propuestas) */}
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <PhaseComparator />
           </div>
-
-          {/* Campaña Pymes Financiables */}
-          <PymesFinanciables />
 
           {/* Servicios Complementarios (ubicados antes de la inversión) */}
           <AdditionalServices />
