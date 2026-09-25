@@ -27,7 +27,7 @@ export default function InvestmentSummary() {
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-1">
               <Receipt size={14} />
-              <span>7. Inversión — Resumen Oficial</span>
+              <span>Resumen Oficial de Inversión</span>
             </div>
             <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight">
               Tabla consolidada de valores
@@ -48,7 +48,7 @@ export default function InvestmentSummary() {
             <div>
               <div className="flex items-center justify-between gap-2 mb-4 pb-3 border-b border-white/[0.06]">
                 <span className="text-xs font-mono font-bold uppercase text-white tracking-wider">
-                  Acompañamiento Mensual (Propuesta 01)
+                  Acompañamiento Mensual (Ecosistema Digital)
                 </span>
                 <span className="text-[10px] font-mono text-[#1ED760] bg-[#1DB954]/15 px-2 py-0.5 rounded-full border border-[#1DB954]/30">
                   Se elige una

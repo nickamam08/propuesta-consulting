@@ -32,7 +32,7 @@ export default function ProjectStart() {
             <div className="flex flex-wrap items-center gap-2 mb-2.5">
               <span className="bento-badge bento-badge-green font-mono">
                 <Compass size={12} />
-                PROPUESTA 01 · ETAPA INICIAL
+                ETAPA INICIAL
               </span>
               <span className="bento-badge text-yellow-300 bg-yellow-500/10 border-yellow-500/30 font-mono">
                 Obligatoria para Fase 1, 2 o 3

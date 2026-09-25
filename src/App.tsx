@@ -8,8 +8,8 @@ import Footer from './components/Footer';
 const ProjectStart = lazy(() => import('./components/ProjectStart'));
 const Phases = lazy(() => import('./components/Phases'));
 const PhaseComparator = lazy(() => import('./components/PhaseComparator'));
-const AdditionalServices = lazy(() => import('./components/AdditionalServices'));
 const PymesFinanciables = lazy(() => import('./components/PymesFinanciables'));
+const AdditionalServices = lazy(() => import('./components/AdditionalServices'));
 const InvestmentSummary = lazy(() => import('./components/InvestmentSummary'));
 const InvestmentCalculator = lazy(() => import('./components/InvestmentCalculator'));
 const Team = lazy(() => import('./components/Team'));
@@ -46,21 +46,38 @@ export default function App() {
   return (
     <>
       <div className="grain" />
-      <div className="reading-progress" aria-hidden="true">
+      <div className="reading-progress no-print" aria-hidden="true">
         <span style={{ width: `${progress}%` }} />
       </div>
 
       <Navbar />
 
       <main className="relative z-10 pb-20 md:pb-12">
-        {/* 1. Contexto & 2. Objetivo */}
+        {/* Header exclusivo para impresión limpia en PDF */}
+        <div className="hidden print:block max-w-[1240px] mx-auto px-4 pt-6 pb-4 mb-6 border-b-2 border-[#1DB954]">
+          <div className="flex justify-between items-end">
+            <div>
+              <span className="text-xs font-mono font-bold text-[#169c46] uppercase tracking-wider block">
+                Punto D' Partida × Finanzas Consulting
+              </span>
+              <h1 className="text-2xl font-bold text-slate-900 mt-1">
+                Propuesta Comercial — De conocimiento financiero a ecosistema digital
+              </h1>
+            </div>
+            <div className="text-right text-[11px] font-mono text-slate-500">
+              Documento Oficial · {new Date().getFullYear()}
+            </div>
+          </div>
+        </div>
+
+        {/* Contexto & Objetivo */}
         <Hero />
 
-        {/* 3. Cómo está estructurada la propuesta */}
+        {/* Estructura de la propuesta */}
         <ProposalOverview />
         
         <Suspense fallback={<LazyFallback />}>
-          {/* 4. Propuesta 01 — Ecosistema Digital */}
+          {/* Ecosistema Digital */}
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <ProjectStart />
           </div>
@@ -69,37 +86,43 @@ export default function App() {
             <PhaseComparator />
           </div>
 
-          {/* 5. Servicios Complementarios */}
-          <AdditionalServices />
-
-          {/* 6. Propuesta 02 — Campaña Pymes Financiables */}
+          {/* Campaña Pymes Financiables */}
           <PymesFinanciables />
 
-          {/* 7. Inversión (Resumen Oficial + Simulador Interactivo) */}
+          {/* Servicios Complementarios (ubicados antes de la inversión) */}
+          <AdditionalServices />
+
+          {/* Inversión (Resumen Oficial + Simulador Interactivo) */}
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <InvestmentSummary />
           </div>
-          <InvestmentCalculator />
+          <div className="no-print">
+            <InvestmentCalculator />
+          </div>
 
-          {/* 8. Ecosistema de trabajo y relación entre las propuestas */}
+          {/* Ecosistema de trabajo y relación entre las propuestas */}
           <Team />
 
-          {/* 9. Requerimientos, condiciones y alcance */}
+          {/* Requerimientos y condiciones */}
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
             <ClientRequirements />
           </div>
           <Conditions />
 
-          {/* 10. Siguiente paso */}
-          <ContactForm />
+          {/* Siguiente paso */}
+          <div className="no-print">
+            <ContactForm />
+          </div>
         </Suspense>
       </main>
 
       <Footer />
-      <WhatsAppFloat />
+      <div id="whatsapp-float" className="no-print">
+        <WhatsAppFloat />
+      </div>
 
       {/* Mobile Sticky Action Bar */}
-      <div className="mobile-cta-rail-bento" aria-label="Acciones rápidas móviles">
+      <div className="mobile-cta-rail-bento no-print" aria-label="Acciones rápidas móviles">
         <a
           href="#comparar"
           className="bg-white/[0.06] border border-white/[0.1] text-white flex items-center justify-center"

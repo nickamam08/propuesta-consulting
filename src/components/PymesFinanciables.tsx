@@ -22,7 +22,7 @@ export default function PymesFinanciables() {
     return () => obs.disconnect();
   }, []);
 
-  const pymesWhatsAppLink = getWhatsAppCustomLink('Hola Punto D\' Partida, me interesa activar la Propuesta 02 — Campaña Pymes Financiables ($3.800.000 + IVA)');
+  const pymesWhatsAppLink = getWhatsAppCustomLink('Hola Punto D\' Partida, me interesa activar la Campaña Pymes Financiables ($3.800.000 + IVA)');
 
   return (
     <section id="pymes" ref={ref} className="py-14 relative">
@@ -32,7 +32,7 @@ export default function PymesFinanciables() {
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
             <Megaphone size={14} />
-            <span>6. Propuesta 02 — Campaña Pymes Financiables</span>
+            <span>Campaña Pymes Financiables</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Campaña puntual de alto impacto

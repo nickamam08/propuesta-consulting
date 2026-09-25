@@ -42,7 +42,7 @@ export default function Team() {
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
             <Users size={14} />
-            <span>8. Ecosistema de trabajo y relación entre propuestas</span>
+            <span>Ecosistema de trabajo y equipo multidisciplinario</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             No está contratando una persona. Está sumando un equipo.

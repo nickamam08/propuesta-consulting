@@ -25,7 +25,7 @@ export default function Phases() {
         <div className="mb-10">
           <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
             <Layers size={14} />
-            <span>4. Propuesta 01 — Ecosistema Digital</span>
+            <span>Ecosistema Digital — Acompañamiento Mensual</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Tres alternativas de acompañamiento mensual

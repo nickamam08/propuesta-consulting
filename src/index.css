@@ -425,3 +425,114 @@ html.light ::-webkit-scrollbar-thumb {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(29, 185, 84, 0.4);
 }
+
+/* ========================================================
+   PRINT STYLES FOR ZERO BLANK PAGES & CRISP PDF EXPORT
+   ======================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+
+  *, *:before, *:after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+    font-size: 10.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  body::before,
+  .grain,
+  .reading-progress,
+  header,
+  footer,
+  .mobile-cta-rail-bento,
+  #whatsapp-float,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  main {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  section {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* Prevent card splitting across pages and eliminate trailing blank pages */
+  .bento-card,
+  .bento-card-spotlight,
+  .bento-card-green-glow,
+  table,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .bento-card {
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Text colors for crisp printing */
+  h1, h2, h3, h4, h5, .text-white {
+    color: #0f172a !important;
+  }
+
+  p, span, td, th, .text-gray-300, .text-gray-400 {
+    color: #334155 !important;
+  }
+
+  .text-\[\#1ED760\],
+  .text-\[\#1DB954\] {
+    color: #169c46 !important;
+  }
+
+  .bento-badge {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  .bento-badge-green {
+    background: #e8f5e9 !important;
+    border-color: #a5d6a7 !important;
+    color: #169c46 !important;
+  }
+
+  .btn-spotify {
+    background: #1DB954 !important;
+    color: #ffffff !important;
+  }
+
+  .btn-glass {
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+}

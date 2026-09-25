@@ -1,25 +1,24 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Sparkles, Calculator, Sun, Moon, MessageCircle } from 'lucide-react';
+import { ArrowRight, Sparkles, Calculator, Sun, Moon, MessageCircle, Download } from 'lucide-react';
 import { WHATSAPP_LINK } from '../data/proposalData';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 25);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Initialize theme from localStorage or system preference
+    // Initialize theme: Default is 'light' unless explicitly saved as 'dark'
     const savedTheme = localStorage.getItem('pdp_theme') as 'dark' | 'light' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      if (savedTheme === 'light') {
-        document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.remove('light');
-      }
+    const initialTheme = savedTheme ?? 'light';
+    setTheme(initialTheme);
+    if (initialTheme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
     }
 
     return () => window.removeEventListener('scroll', onScroll);
@@ -36,9 +35,18 @@ export default function Navbar() {
     }
   };
 
+  const handleDownloadPDF = () => {
+    const originalTitle = document.title;
+    document.title = "Propuesta Comercial — Finanzas Consulting x Punto D' Partida";
+    window.print();
+    setTimeout(() => {
+      document.title = originalTitle;
+    }, 1000);
+  };
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
         scrolled
           ? 'bg-[#090a0f]/85 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl py-3'
           : 'bg-transparent py-4'
@@ -66,6 +74,19 @@ export default function Navbar() {
 
         {/* Right Action buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Botón Descargar PDF */}
+          <button
+            type="button"
+            onClick={handleDownloadPDF}
+            className="px-3 sm:px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
+            title="Descargar propuesta completa en PDF"
+            aria-label="Descargar propuesta completa en PDF"
+          >
+            <Download size={13} className="text-[#1ED760]" />
+            <span className="hidden sm:inline">Descargar PDF</span>
+            <span className="sm:hidden">PDF</span>
+          </button>
+
           {/* Light / Dark Mode Toggle */}
           <button
             type="button"
@@ -90,7 +111,7 @@ export default function Navbar() {
           {/* Quick Calculator Shortcut */}
           <a
             href="#inversion"
-            className="hidden sm:flex px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all items-center gap-1.5"
+            className="hidden md:flex px-3.5 py-2 rounded-full text-xs font-semibold text-gray-300 bg-white/[0.04] border border-white/[0.08] hover:bg-[#1DB954]/10 hover:border-[#1DB954]/30 hover:text-white transition-all items-center gap-1.5"
           >
             <Calculator size={13} className="text-[#1ED760]" />
             <span>Simulador</span>

@@ -8,7 +8,7 @@ export default function ProposalOverview() {
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
             <Layers size={14} />
-            <span>3. Cómo está estructurada la propuesta</span>
+            <span>Estructura de la propuesta</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Dos rutas claras e independientes
@@ -18,14 +18,14 @@ export default function ProposalOverview() {
           </p>
         </div>
 
-        {/* 2 Bento Columns: Propuesta 01 vs Propuesta 02 */}
+        {/* 2 Bento Columns: Ecosistema Digital vs Campaña Pymes */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-          {/* Bento Card: Propuesta 01 */}
+          {/* Bento Card: Ecosistema Digital */}
           <div className="bento-card p-6 sm:p-7 flex flex-col justify-between border-white/[0.09] hover:border-[#1DB954]/30 group">
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="bento-badge bento-badge-green font-mono">
-                  PROPUESTA 01
+                  ECOSISTEMA DIGITAL
                 </span>
                 <span className="text-xs font-semibold text-gray-400">
                   Acompañamiento Mensual
@@ -72,7 +72,7 @@ export default function ProposalOverview() {
             <div>
               <div className="flex items-center justify-between gap-2 mb-4">
                 <span className="bento-badge text-white font-mono bg-white/[0.08]">
-                  PROPUESTA 02
+                  CAMPAÑA INDEPENDIENTE
                 </span>
                 <span className="text-xs font-semibold text-gray-400">
                   Campaña Puntual
@@ -123,7 +123,7 @@ export default function ProposalOverview() {
             </div>
             <div>
               <span className="text-xs font-bold text-white block mb-0.5">
-                Etapa Inicial Obligatoria en Propuesta 01
+                Etapa Inicial Obligatoria para Fases Mensuales
               </span>
               <p className="text-xs text-gray-400 leading-relaxed">
                 No es una cuarta opción: es el punto de partida necesario para estructurar la base. Si se inicia en Fase 2 o 3, la Etapa Inicial igualmente se contrata.

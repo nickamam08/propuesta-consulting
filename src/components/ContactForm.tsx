@@ -63,7 +63,7 @@ export default function ContactForm() {
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
                 <Compass size={14} />
-                <span>10. Siguiente paso</span>
+                <span>Siguiente paso</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-3">

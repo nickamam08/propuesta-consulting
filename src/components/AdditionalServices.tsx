@@ -26,7 +26,7 @@ export default function AdditionalServices() {
         <div className="mb-8">
           <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-2">
             <Wrench size={14} />
-            <span>5. Servicios complementarios</span>
+            <span>Servicios complementarios</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
             Módulos técnicos especializados

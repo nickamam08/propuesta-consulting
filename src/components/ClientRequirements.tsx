@@ -24,7 +24,7 @@ export default function ClientRequirements() {
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-1">
               <ClipboardList size={14} />
-              <span>9. Requerimientos, condiciones y alcance</span>
+              <span>Requerimientos para dar inicio</span>
             </div>
             <h3 className="text-xl sm:text-3xl font-bold text-white tracking-tight">
               Insumos requeridos para dar inicio

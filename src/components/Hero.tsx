@@ -1,9 +1,9 @@
-import { ArrowRight, CheckCircle2, Sparkles, TrendingUp, Layers, Compass, ArrowUpRight } from 'lucide-react';
-import { STRATEGY_STEPS, WHATSAPP_LINK } from '../data/proposalData';
+import { ArrowRight, Sparkles, TrendingUp, Compass } from 'lucide-react';
+import { STRATEGY_STEPS } from '../data/proposalData';
 
 export default function Hero() {
   return (
-    <section id="inicio" className="pt-28 pb-14 px-4 sm:px-6 relative overflow-hidden">
+    <section id="inicio" className="pt-28 pb-8 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-[1240px] mx-auto">
         {/* Top Eyebrow & Badges */}
         <div className="flex flex-wrap items-center justify-center gap-2.5 mb-6">
@@ -29,14 +29,14 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Bento Grid: Contexto + Objetivo + Ruta */}
-        <div id="objetivo" className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 mb-8">
-          {/* Card 1: 1. Contexto (Cols 5) */}
+        {/* Bento Grid: Contexto + Objetivo */}
+        <div id="objetivo" className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+          {/* Card 1: Contexto (Cols 5) */}
           <div className="lg:col-span-5 bento-card p-6 sm:p-7 flex flex-col justify-between border-white/[0.09]">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider mb-3">
                 <Compass size={14} />
-                <span>1. Contexto</span>
+                <span>Contexto</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight">
                 Transformar conocimiento en oportunidades comerciales.
@@ -54,13 +54,13 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Card 2: 2. Objetivo (Cols 7) */}
+          {/* Card 2: Objetivo Estratégico (Cols 7) */}
           <div className="lg:col-span-7 bento-card bento-card-green-glow p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-br from-[#12151c] to-[#0d1017]">
             <div>
               <div className="flex items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2 text-xs font-mono text-[#1ED760] font-semibold uppercase tracking-wider">
                   <TrendingUp size={14} />
-                  <span>2. Objetivo Estratégico</span>
+                  <span>Objetivo Estratégico</span>
                 </div>
                 <span className="text-[11px] font-mono text-gray-400 bg-white/[0.04] px-2 py-0.5 rounded-full border border-white/[0.06]">
                   Ruta de 6 Pasos
@@ -97,44 +97,6 @@ export default function Hero() {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Quick Bento Summary & Jump Bar */}
-        <div className="bento-card p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 border-white/[0.08]">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-semibold text-gray-400">Resumen Rápido:</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/[0.05] text-white border border-white/[0.08]">
-              <CheckCircle2 size={12} className="text-[#1ED760]" />
-              Etapa Inicial: $1.7M
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/[0.05] text-white border border-white/[0.08]">
-              <CheckCircle2 size={12} className="text-[#1ED760]" />
-              3 Fases Mensuales ($2.4M / $3.6M / $4.4M)
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/[0.05] text-white border border-white/[0.08]">
-              <CheckCircle2 size={12} className="text-[#1ED760]" />
-              Campaña Pymes: $3.8M
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2.5 w-full md:w-auto">
-            <a
-              href="#estructura"
-              className="btn-glass text-xs py-2 px-4 w-full md:w-auto justify-center"
-            >
-              <span>Ver Estructura</span>
-              <Layers size={13} />
-            </a>
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-spotify text-xs py-2 px-4 w-full md:w-auto justify-center"
-            >
-              <span>Hablar con PD'P</span>
-              <ArrowUpRight size={13} />
-            </a>
           </div>
         </div>
       </div>

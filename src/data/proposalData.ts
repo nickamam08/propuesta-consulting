@@ -17,15 +17,15 @@ export const WHATSAPP_LINK = getWhatsAppCustomLink();
 
 // ---- Navegación ----
 export const NAV_ITEMS = [
-  { label: '01. Objetivo', href: '#objetivo' },
-  { label: '02. Estructura', href: '#estructura' },
-  { label: '03. Ecosistema Digital', href: '#ecosistema' },
-  { label: '04. Servicios Extra', href: '#complementarios' },
-  { label: '05. Pymes Financiables', href: '#pymes' },
-  { label: '06. Inversión & Simulador', href: '#inversion' },
-  { label: '07. Equipo', href: '#equipo' },
-  { label: '08. Requerimientos & Reglas', href: '#condiciones' },
-  { label: '09. Siguiente Paso', href: '#contacto' },
+  { label: 'Objetivo', href: '#objetivo' },
+  { label: 'Estructura', href: '#estructura' },
+  { label: 'Ecosistema Digital', href: '#ecosistema' },
+  { label: 'Pymes Financiables', href: '#pymes' },
+  { label: 'Servicios Extra', href: '#complementarios' },
+  { label: 'Inversión & Simulador', href: '#inversion' },
+  { label: 'Equipo', href: '#equipo' },
+  { label: 'Requerimientos & Reglas', href: '#condiciones' },
+  { label: 'Siguiente Paso', href: '#contacto' },
 ] as const;
 
 // ---- Track 1: Etapa Inicial Obligatoria ----
@@ -321,7 +321,7 @@ export const COMPARISON_MATRIX: ComparisonRow[] = [
 
 // ---- Track 2: Campaña Pymes Financiables ----
 export const PYMES_CAMPAIGN = {
-  tag: 'PROPUESTA 02 — CAMPAÑA PYMES FINANCIABLES',
+  tag: 'CAMPAÑA PYMES FINANCIABLES',
   title: 'Campaña Pymes Financiables',
   subtitle: 'Campaña puntual para producir, publicar y promocionar la iniciativa en Facebook e Instagram mediante Meta Ads.',
   price: '$3.800.000',
@@ -437,7 +437,7 @@ export const CLIENT_REQUIREMENTS = [
 
 // ---- Tabla Resumen de Inversión ----
 export const INVESTMENT_SUMMARY = [
-  { category: 'Etapa Inicial', label: 'Etapa Inicial — Propuesta 01', price: '$1.700.000', priceRaw: 1700000, suffix: '+ IVA · Pago único', note: 'Obligatoria para Fase 1, 2 o 3', highlight: true },
+  { category: 'Etapa Inicial', label: 'Etapa Inicial (Construcción Estratégica)', price: '$1.700.000', priceRaw: 1700000, suffix: '+ IVA · Pago único', note: 'Obligatoria para Fase 1, 2 o 3', highlight: true },
   { category: 'Acompañamiento Mensual', label: 'Fase 1 — Posicionamiento y Contenido', price: '$2.400.000', priceRaw: 2400000, suffix: '+ IVA / mes', note: 'Se elige esta o Fase 2 o Fase 3' },
   { category: 'Acompañamiento Mensual', label: 'Fase 2 — Contenido + Crecimiento + Captación', price: '$3.600.000', priceRaw: 3600000, suffix: '+ IVA / mes', note: 'Se elige esta o Fase 1 o Fase 3', recommended: true },
   { category: 'Acompañamiento Mensual', label: 'Fase 3 — Ecosistema Digital + Automatización', price: '$4.400.000', priceRaw: 4400000, suffix: '+ IVA / mes', note: 'Se elige esta o Fase 1 o Fase 2' },
